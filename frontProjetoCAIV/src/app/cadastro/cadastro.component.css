@@ -1,0 +1,13 @@
+#img-bg{
+    background-image: url("https://static.stealthelook.com.br/wp-content/uploads/2020/03/como-cuidar-das-maos-ressecadas-capa-20200331183119.jpg") ;
+
+    min-height:  695px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fundoCadastro{
+    background-color: #C03CFF;
+}
