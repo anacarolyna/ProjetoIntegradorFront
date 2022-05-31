@@ -1,0 +1,21 @@
+#img-bg{
+    background: url(https://i.imgur.com/QI7VKxx.jpg);
+
+    min-height: 695px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-color{
+    background-color: #C03CFF;
+}
+
+.br-15{
+    border-radius: 15px;
+}
+
+.bw-2{
+    border-width: 2px;
+}
