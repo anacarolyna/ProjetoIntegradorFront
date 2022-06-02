@@ -1,11 +1,12 @@
 #img-bg{
-    background: url(https://i.imgur.com/QI7VKxx.jpg);
+    background: url(https://i.imgur.com/zIArfFK.png);
 
-    min-height: 695px;
+    min-height: 570px;
+    min-width: 200px;
 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 .bg-color{
@@ -18,4 +19,14 @@
 
 .bw-2{
     border-width: 2px;
+}
+h1 {
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.13);
+}
+.box-shadow {
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.034) !important;
+}
+.text-sadow {
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.13);
+
 }
