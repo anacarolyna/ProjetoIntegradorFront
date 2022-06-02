@@ -1,6 +1,9 @@
 .corMenu {
     background-color: #C03CFF ;
 }
+.sombra {
+    box-shadow: inset 0 0 1em rgba(0, 0, 0, 0.103), 0 0 1em #00000048;
+}
 .br-15 {
     border-radius: 15px !important;
 }
