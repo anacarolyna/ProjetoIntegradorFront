@@ -7,6 +7,9 @@
 .br-15 {
     border-radius: 15px !important;
 }
+.br-4 {
+    border-radius: 4px !important;
+}
 .bw-2 {
     border-width: 2px !important;
 }
