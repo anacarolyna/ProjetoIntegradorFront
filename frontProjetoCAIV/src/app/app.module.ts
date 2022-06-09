@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MenuOnComponent } from './menu-on/menu-on.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     RodapeComponent,
     LoginComponent,
     HomeComponent,
-    CadastroComponent
+    CadastroComponent,
+    MenuOnComponent
   ],
   imports: [
     BrowserModule,
