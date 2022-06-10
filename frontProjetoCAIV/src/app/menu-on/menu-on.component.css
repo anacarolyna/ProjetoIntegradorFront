@@ -23,3 +23,7 @@ a {
 a:hover {
     color:darkslategrey;
 }
+
+i{
+    cursor: pointer;
+}

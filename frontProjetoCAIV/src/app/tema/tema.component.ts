@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
+import { AuthService } from '../service/auth.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -29,11 +30,11 @@ export class TemaComponent implements OnInit {
   }
 
   findAllTemas() {
-    this.temaService.getAllTema().subscribe({
-      next: (resp: Tema[]) =>{
+    this.temaService.getAllTema().subscribe(
+      (resp: Tema[]) =>{
       this.listaTemas = resp
       },
-    });
+    );
   }
 
   cadastrar() {
