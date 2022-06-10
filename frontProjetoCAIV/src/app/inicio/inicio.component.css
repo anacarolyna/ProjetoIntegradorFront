@@ -27,3 +27,16 @@
 .text-shadow {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.062);
 }
+.left {
+    display:flex;
+    align-items: center;
+
+}
+.list {
+    display: flex;
+    display:block;
+}
+.navh {
+    height: 250px;
+    width: 50px;
+}
