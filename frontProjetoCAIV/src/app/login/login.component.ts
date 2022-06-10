@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    this.auth.entrar(this.userLogin).subscribe((resp: Userlogin) => {
+    this.auth.entrar(this.userLogin).subscribe({
+      next: (resp: Userlogin) => {
       this.userLogin = resp
 
       environment.token = this.userLogin.token
@@ -35,10 +36,11 @@ export class LoginComponent implements OnInit {
       this.userLogin.foto
 
       this.router.navigate(['/inicio'])
-    }, erro => {
+    }, error: (erro) => {
       if (erro.status == 500 || erro.status == 401) {
         alert('Usuário ou senha estão incorretos!')
-      }
-    })
+        }
+      },
+    });
   }
 }
