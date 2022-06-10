@@ -13,7 +13,6 @@ const routes: Routes = [
   {path:'cadastro', component: CadastroComponent},
   {path: 'home', component: HomeComponent},
   {path: 'inicio', component: InicioComponent}
-
 ];
 
 @NgModule({
