@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuOnComponent } from './menu-on/menu-on.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { TemaComponent } from './tema/tema.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { InicioComponent } from './inicio/inicio.component';
     HomeComponent,
     CadastroComponent,
     MenuOnComponent,
-    InicioComponent
+    InicioComponent,
+    TemaComponent
 
   ],
   imports: [

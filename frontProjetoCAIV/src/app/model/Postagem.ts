@@ -5,7 +5,8 @@ export class Postagem {
     public id: number;
     public titulo: string;
     public texto: string;
+    public referencia: string;
     public data: Date;
-    public usuario: User
-    public tema: Tema
+    public tema: Tema;
+    public usuario: User;
 }
