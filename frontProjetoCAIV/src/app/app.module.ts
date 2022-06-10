@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuOnComponent } from './menu-on/menu-on.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { MenuOnComponent } from './menu-on/menu-on.component';
     LoginComponent,
     HomeComponent,
     CadastroComponent,
-    MenuOnComponent
+    MenuOnComponent,
+    InicioComponent
+
   ],
   imports: [
     BrowserModule,
