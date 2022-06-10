@@ -10,4 +10,8 @@ export class AppComponent {
   constructor(
     public auth: AuthService
   ){}
+
+  ngOnInit() {
+    window.scroll(0,0)
+  }
 }
