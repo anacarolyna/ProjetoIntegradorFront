@@ -1,5 +1,6 @@
 <div class="container-fluid fundo">
   <div class="row nvh">
+    <!-- NAVBAR LATERAL COM ICONES -->
     <div class="col-md-1 navh left ml-2 p-0 body-fundo br-15 mt-5 shadow">
       <aside>
         <nav class="navbar left fixed-left navbar-light br-15">
@@ -54,8 +55,9 @@
     <div
       class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
     >
-      <h1 class="text-center shadow-sm br-10 mt-3">Feed inicial</h1>
+      <h1 class="text-center br-10 mt-3 text-shadow">Feed inicial</h1>
 
+      <!-- CARD 1 -->
       <div class="col">
         <div class="card br-10 mt-5 mb-5" style="width: 35rem">
           <div class="card-body p-1 sombrabox br-10">
@@ -65,7 +67,7 @@
                   Titulo
                 </h5></span
               >
-              <h6 class="br-10 col-md-6 ml-1 card-subtitle bg-light text-muted">
+              <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
                 Por: (usuario) Assunto:(sei lá)
               </h6>
             </div>
@@ -74,21 +76,21 @@
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <h6 class="br-10 col-md-6 ml-1 card-subtitle bg-light text-muted">
+            <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
               Data: (data) Referência:
             </h6>
             <footer
               class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
             >
               <button
-                class="card-link p-0 text-danger bg-transparent borda "
+                class="card-link p-0 text-danger bg-transparent borda hoversombra"
                 data-toggle="modal"
                 data-target="#deletar"
               >
                 Deletar
               </button>
               <button
-                class="card-link p-0 text-primary bg-transparent borda "
+                class="card-link p-0 text-primary bg-transparent borda hoversombra"
                 data-toggle="modal"
                 data-target="#editar"
               >
@@ -109,7 +111,7 @@
                   Titulo
                 </h5></span
               >
-              <h6 class="br-10 col-md-6 ml-1 card-subtitle bg-light text-muted">
+              <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
                 Por: (usuario) Assunto:(sei lá)
               </h6>
             </div>
@@ -118,21 +120,21 @@
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </p>
-            <h6 class="br-10 col-md-6 ml-1 card-subtitle bg-light text-muted">
+            <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
               Data:(data) Referência:
             </h6>
             <footer
               class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
             >
               <button
-                class="card-link p-0 text-danger bg-transparent borda"
+                class="card-link p-0 text-danger bg-transparent borda hoversombra"
                 data-toggle="modal"
                 data-target="#deletar"
               >
                 Deletar
               </button>
               <button
-                class="card-link p-0 text-primary bg-transparent borda "
+                class="card-link p-0 text-primary bg-transparent borda hoversombra"
                 data-toggle="modal"
                 data-target="#editar"
               >
@@ -146,7 +148,7 @@
   </div>
 </div>
 
-<!-- MODAL-->
+<!-- MODAL NOVA POSTAGEM-->
 <div
   class="modal fade"
   id="novaPostagem"
@@ -154,13 +156,13 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered borda">
     <div class="modal-content">
       <div class="modal-header bg-light">
         <h5 class="modal-title" id="novaPostagem">Nova Postagem</h5>
         <button
           type="button"
-          class="close"
+          class="close closered borda"
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -227,7 +229,7 @@
         <h5 class="modal-title" id="editar">Editar postagem</h5>
         <button
           type="button"
-          class="close"
+          class="close borda closered"
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -268,7 +270,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-primary br-10"
+            class="btn btn-primary br-10 "
             (click)="publicar()"
             data-dismiss="modal"
           >
@@ -295,7 +297,7 @@
         <h5 class="modal-title" id="deletar">Editar postagem</h5>
         <button
           type="button"
-          class="close"
+          class="close borda closered"
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -340,7 +342,7 @@
             (click)="publicar()"
             data-dismiss="modal"
           >
-            Deleter
+            Deletar
           </button>
         </div>
       </div>
