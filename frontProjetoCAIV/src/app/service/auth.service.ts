@@ -32,8 +32,4 @@ export class AuthService {
     return ok
   }
 
-  getByIdUser(id: number): Observable<User> {
-    return this.http.get<User>(`https://anablogpessoal.herokuapp.com/usuarios/${id}`, {headers: new HttpHeaders().set('Authorization', environment.token)})
-  }
-
 }
