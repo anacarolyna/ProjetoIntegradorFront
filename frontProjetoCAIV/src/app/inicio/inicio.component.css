@@ -49,10 +49,10 @@ outline: none;
 }
 .closered:hover {
     color: red;
-    box-shadow: -2px 3px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: -3px 3px rgba(0, 0, 0, 0.1) !important;
 }
 .hoversombra:hover {
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.062);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.116);
 }
 h1 {
     text-shadow: 3px 3px rgba(0, 0, 0, 0.062) !important;
