@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light sombra p-2 corMenu br-4 text-white">
+<nav class="navbar navbar-expand-lg navbar-light sombra p-2 corMenu text-white">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,12 +8,12 @@
         <ul class="navbar-nav mr-auto d-flex align-items-center">
 
             <li class="nav-item active">
-                <img src="https://i.imgur.com/rOmhIOT.png" alt="Foto de perfil" width="50px" width="50px"
+                <img src="{{foto}}" alt="Foto de perfil" width="50px" width="50px"
                     class="img-fluid rounded-circle " />
             </li>
 
             <li class="nav-item px-2">
-                <p class="m-0 font-weight-bold text-white fs-16">Olá, Usuário</p>
+                <p class="m-0 font-weight-bold text-white fs-16">Olá, {{nome}}</p>
             </li>
 
             <li class="nav-item pl-3">
@@ -27,8 +27,8 @@
         </ul>
 
         <ul class="navbar-nav ml-auto d-flex align-items-center">
-            <li class="nav-item pl-3">
-              <a class="m-0 font-weight-bold text-white fs-16">Sair <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            <li class="nav-item pl-3 ">
+              <a (click)="sair()" class="m-0 font-weight-bold text-white fs-16 pointer">Sair <i class="fa fa-sign-out pointer" aria-hidden="true"></i></a>
             </li>
           </ul>
     </div>

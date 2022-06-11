@@ -12,24 +12,43 @@ export class AuthService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {}
+
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token),
+  };
   
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token),
+    };
+  }
+
   entrar(userLogin: Userlogin): Observable<Userlogin>{
-    return this.http.post<Userlogin>('https://benior-blogpessoal.herokuapp.com/usuario/logar', userLogin)
+    return this.http.post<Userlogin>('https://projetocaiv.herokuapp.com/usuario/logar', userLogin)
   }  
 
   cadastrar(user: User):Observable <User> {
-    return this.http.post <User> ('https://benior-blogpessoal.herokuapp.com/usuario/cadastrar', user)
+    return this.http.post <User> ('https://projetocaiv.herokuapp.com/usuario/cadastrar', user)
   }
 
   logado() {
-    let ok: boolean = false
+    var ok: boolean = false
 
     if(environment.token != '') {
       ok = true
     }
 
     return ok
+  }
+
+  deslogado(){
+    var okay: boolean = false
+
+    if(environment.token == '') {
+      okay = true
+    }
+    return okay
   }
 
 }
