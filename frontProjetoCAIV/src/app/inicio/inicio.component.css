@@ -1,6 +1,9 @@
 .body-fundo{
     background-color: #C03CFF;
 }
+.quebraLinha {
+    display: block;
+}
 .logo {
     object-fit: contain;
 }

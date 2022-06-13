@@ -1,5 +1,4 @@
 <div class="container-fluid fundo">
-  
   <div class="row nvh left">
     <!-- NAVBAR LATERAL COM ICONES -->
     <div class="col-md-1 left navh ml-2 p-0 body-fundo br-15 mt-5 shadow">
@@ -44,51 +43,100 @@
           </div>
         </nav>
       </aside> -->
-      <div class="nav flex-column nav-pills text-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" data-toggle="modal"
-        data-target="#novaPostagem">Nova Postagem</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Editar Postagem</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+      <div
+        class="nav flex-column nav-pills text-white pl-3"
+        id="v-pills-tab"
+        role="tablist"
+        aria-orientation="vertical"
+      >
+        <a
+          class="nav-link active"
+          id="v-pills-home-tab"
+          data-toggle="pill"
+          href="#v-pills-home"
+          role="tab"
+          aria-controls="v-pills-home"
+          aria-selected="true"
+          ><i class="fi fi-sr-home icones pl-2"></i></a
+        >
+        <a
+          class="nav-link"
+          id="v-pills-profile-tab"
+          data-toggle="pill"
+          href="#v-pills-profile"
+          role="tab"
+          aria-controls="v-pills-profile"
+          aria-selected="false"
+          data-toggle="modal"
+          data-target="#novaPostagem"
+          ><i class="fi fi-sr-user-add icones pl-2"></i></a
+        >
+        <a
+          class="nav-link"
+          id="v-pills-messages-tab"
+          data-toggle="pill"
+          href="#v-pills-messages"
+          role="tab"
+          aria-controls="v-pills-messages"
+          aria-selected="false"
+          ><i class="fi fi-sr-comment-user icones pl-2"></i></a
+        >
+        <a
+          class="nav-link"
+          id="v-pills-settings-tab"
+          data-toggle="pill"
+          href="#v-pills-settings"
+          role="tab"
+          aria-controls="v-pills-settings"
+          aria-selected="false"
+          ><i class="fi fi-sr-apps-sort icones pl-2"></i></a
+        >
       </div>
-
-
-      
-        
-      
-
     </div>
 
-<!-- CARD GROUP POSTAGENS -->
+    <!-- CARD GROUP POSTAGENS -->
     <div
       class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
+      *ngFor="let postagem of listaPostagens"
     >
       <h1 class="text-center br-10 mt-3 text-shadow">Feed inicial</h1>
 
       <!-- CARD 1 -->
       <div class="col">
-      
         <div class="tab-content" id="v-pills-tabContent">
-          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <div
+            class="tab-pane fade show active"
+            id="v-pills-home"
+            role="tabpanel"
+            aria-labelledby="v-pills-home-tab"
+          >
+            <!-- HOME -->
             <div class="card br-10 mt-5 mb-5" style="width: 35rem">
               <div class="card-body p-1 sombrabox br-10">
                 <div class="text-shadow">
                   <span
                     ><h5 class="card-title bg-light sombra text-center br-10">
-                      Titulo
+                      {{ postagem.titulo }}
                     </h5></span
                   >
-                  <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
-                    Por: (usuario) Assunto:(sei lá)
+
+                  <p class="card-text p-4 text-shadow">
+                    {{ postagem.texto }}
+                  </p>
+
+                  <h6
+                    class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+                  >
+                    Por: {{ postagem.usuario.nome }} Assunto:
+                    {{ postagem.tema.descricao }}
                   </h6>
                 </div>
-    
-                <p class="card-text p-4 text-shadow">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-                </p>
-                <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
-                  Data:(data) Referência:
+
+                <h6
+                  class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+                >
+                  Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "HH:mm" }}
                 </h6>
                 <footer
                   class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
@@ -100,14 +148,14 @@
                   >
                     Deletar
                   </button>
-    
+
                   <button
-                  routerLink="/tema"
+                    routerLink="/tema"
                     class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
                   >
                     Crie um tema
                   </button>
-    
+
                   <button
                     class="card-link p-0 text-primary bg-transparent borda hoversombra"
                     data-toggle="modal"
@@ -119,58 +167,144 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-            <div class="card br-10 mt-5 mb-5" style="width: 35rem">
-              <div class="card-body p-1 sombrabox br-10">
-                <div class="text-shadow">
-                  <span
-                    ><h5 class="card-title bg-light sombra text-center br-10">
-                      Titulo
-                    </h5></span
-                  >
-                  <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
-                    Por: (usuario) Assunto:(sei lá)
-                  </h6>
-                </div>
-    
-                <p class="card-text p-4 text-shadow">
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
-                </p>
-                <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
-                  Data:(data) Referência:
-                </h6>
-                <footer
-                  class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+          <!-- HOME -->
+
+          <div
+            class="tab-pane fade"
+            id="v-pills-profile"
+            role="tabpanel"
+            aria-labelledby="v-pills-profile-tab"
+          >
+            
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-messages"
+            role="tabpanel"
+            aria-labelledby="v-pills-messages-tab"
+          >
+          <!-- Minhas postagens -->
+          <div class="card br-10 mt-5 mb-5" style="width: 35rem">
+            <div class="card-body p-1 sombrabox br-10">
+              <div class="text-shadow">
+                <span
+                  ><h5 class="card-title bg-light sombra text-center br-10">
+                    {{ postagem.titulo }}
+                  </h5></span
                 >
-                  <button
-                    class="card-link p-0 text-danger bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#deletar"
-                  >
-                    Deletar
-                  </button>
-    
-                  <button
-                  routerLink="/tema"
-                    class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
-                  >
-                    Crie um tema
-                  </button>
-    
-                  <button
-                    class="card-link p-0 text-primary bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#editar"
-                  >
-                    Editarrr
-                  </button>
-                </footer>
+
+                <p class="card-text p-4 text-shadow">
+                  {{ postagem.texto }}
+                </p>
+
+                <h6
+                  class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+                >
+                  Por: {{ postagem.usuario.nome }} Assunto:
+                  {{ postagem.tema.descricao }}
+                </h6>
               </div>
+
+              <h6
+                class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+              >
+                Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                {{ postagem.data | date: "HH:mm" }}
+              </h6>
+              <footer
+                class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+              >
+                <button
+                  class="card-link p-0 text-danger bg-transparent borda hoversombra"
+                  data-toggle="modal"
+                  data-target="#deletar"
+                >
+                  Deletar
+                </button>
+
+                <button
+                  routerLink="/tema"
+                  class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
+                >
+                  Crie um tema
+                </button>
+
+                <button
+                  class="card-link p-0 text-primary bg-transparent borda hoversombra"
+                  data-toggle="modal"
+                  data-target="#editar"
+                >
+                  Editarrrr
+                </button>
+              </footer>
             </div>
           </div>
-          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+          <!-- Minhas postagens -->
+          </div>
+          <div
+            class="tab-pane fade"
+            id="v-pills-settings"
+            role="tabpanel"
+            aria-labelledby="v-pills-settings-tab"
+          >
+          <!-- Postagens por tema -->
+          <div class="card br-10 mt-5 mb-5" style="width: 35rem">
+            <div class="card-body p-1 sombrabox br-10">
+              <div class="text-shadow">
+                <span
+                  ><h5 class="card-title bg-light sombra text-center br-10">
+                    {{ postagem.titulo }}
+                  </h5></span
+                >
+
+                <p class="card-text p-4 text-shadow">
+                  {{ postagem.texto }}
+                </p>
+
+                <h6
+                  class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+                >
+                  Por: {{ postagem.usuario.nome }} Assunto:
+                  {{ postagem.tema.descricao }}
+                </h6>
+              </div>
+
+              <h6
+                class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+              >
+                Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                {{ postagem.data | date: "HH:mm" }}
+              </h6>
+              <footer
+                class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+              >
+                <button
+                  class="card-link p-0 text-danger bg-transparent borda hoversombra"
+                  data-toggle="modal"
+                  data-target="#deletar"
+                >
+                  Deletar
+                </button>
+
+                <button
+                  routerLink="/tema"
+                  class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
+                >
+                  Crie um temaaa
+                </button>
+
+                <button
+                  class="card-link p-0 text-primary bg-transparent borda hoversombra"
+                  data-toggle="modal"
+                  data-target="#editar"
+                >
+                  Editar
+                </button>
+              </footer>
+            </div>
+          </div>
+          <!-- Postagens por tema -->
+          </div>
         </div>
       </div>
     </div>
@@ -189,10 +323,10 @@
   <div class="modal-dialog modal-dialog-centered borda">
     <div class="modal-content br-10">
       <div class="modal-header br-10 bg-light">
-        <h5 class="modal-title  text-shadow" id="novaPostagem">Nova Postagem</h5>
+        <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
         <button
           type="button"
-          class="close closered borda br-10 "
+          class="close closered borda br-10"
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -200,7 +334,7 @@
         </button>
       </div>
 
-      <div class="modal-body ">
+      <div class="modal-body">
         <div class="form-group">
           <label for="titulo">Título:</label>
           <input
@@ -223,14 +357,20 @@
           ></textarea>
         </div>
         <div class="form-group">
-          <label for="tema">Escolha seu tema ou <a routerLink="/tema" data-dismiss="modal">
-              cadastre um novo</a>:
+          <label for="tema"
+            >Escolha seu tema ou
+            <a routerLink="/tema" data-dismiss="modal"> cadastre um novo</a>:
           </label>
-          <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()"
-            name="tema" id="tema">
-              <option *ngFor="let item of listaTemas" value="{{item.id}}">
-                {{item.descricao}}
-              </option>
+          <select
+            class="form-control"
+            [(ngModel)]="idTema"
+            (change)="findByIdTema()"
+            name="tema"
+            id="tema"
+          >
+            <option *ngFor="let item of listaTemas" value="{{ item.id }}">
+              {{ item.descricao }}
+            </option>
           </select>
         </div>
 
@@ -257,67 +397,81 @@
 </div>
 
 <!-- MODAL EDIT POSTAGENS -->
+
 <div
   class="modal fade"
   id="editar"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header bg-light br-10">
-        <h5 class="modal-title text-center text-shadow" id="editar">Editar postagem</h5>
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">
+          Apagar postagem
+        </h5>
         <button
           type="button"
-          class="close borda closered br-10"
+          class="close"
           data-dismiss="modal"
           aria-label="Close"
         >
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">×</span>
         </button>
       </div>
-
       <div class="modal-body">
         <div class="form-group">
-          <label for="titulo">Título:</label>
+          <label for="titulo">Título</label>
           <input
             [(ngModel)]="postagem.titulo"
             type="text"
             class="form-control"
             id="titulo"
-            placeholder="Digite o título"
+            placeholder="Seu título aqui "
           />
         </div>
-
         <div class="form-group">
-          <label for="texto">Texto:</label>
+          <label for="texto">Texto</label>
           <textarea
             [(ngModel)]="postagem.texto"
             class="form-control"
-            name=""
-            id=""
-            rows="3"
+            name="texto"
+            id="texto"
+            rows="5"
           ></textarea>
         </div>
-
-        <div class="d-flex justify-content-center">
-          <button
-            type="button"
-            class="btn btn-danger br-10 mr-3"
-            data-dismiss="modal"
+        <div class="form-group">
+          <label for="tema"
+            >Escolha um tema
+            <a routerLink="/tema" data-dismiss="modal">cadastre um novo</a>:
+          </label>
+          <select
+            class="form-control"
+            name="tema"
+            id="tema"
+            [(ngModel)]="idTema"
+            (change)="findByIdTema()"
           >
-            Cancelar
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary br-10 "
-            (click)="publicar()"
-            data-dismiss="modal"
-          >
-            Editar
-          </button>
+            <option *ngFor="let item of listaTemas" value="{{ item.id }}">
+              {{ item.descricao }}
+            </option>
+          </select>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="atualizar()"
+          data-dismiss="modal"
+        >
+          Publicar
+        </button>
       </div>
     </div>
   </div>
@@ -338,7 +492,7 @@
         <h5 class="modal-title text-shadow" id="deletar">Editar postagem</h5>
         <button
           type="button"
-          class="close borda closered br-10 "
+          class="close borda closered br-10"
           data-dismiss="modal"
           aria-label="Close"
         >

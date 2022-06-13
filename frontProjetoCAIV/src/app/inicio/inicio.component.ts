@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
@@ -17,6 +17,8 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
+  idPost: number
+
   listaPostagens: Postagem[]
 
   tema: Tema = new Tema()
@@ -30,6 +32,7 @@ export class InicioComponent implements OnInit {
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
+    private route: ActivatedRoute,
     private authService: AuthService,
     private http: HttpClient
 
@@ -41,7 +44,11 @@ export class InicioComponent implements OnInit {
       this.router.navigate(['/login'])
     }
 
+    this.idPost = this.route.snapshot.params['id']
+    this.findByIdPostagem(this.idPost)
+
     this.getAllPostagens()
+    this.getAllTemas()
 
   }
 
@@ -51,26 +58,58 @@ export class InicioComponent implements OnInit {
     })
   }
 
+  getAllTemas() {
+    this.temaService.getAllTema().subscribe((resp: Tema[]) => {
+      this.listaTemas = resp
+    })
+  }
+
+
+  findByIdPostagem(id: number) {
+    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
+      this.postagem = resp
+    })
+  }
+
+
   findByIdTema() {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema)=>{
       this.tema = resp
     })
   }
 
-  publicar(){
+  publicar() {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
     this.user.id = this.idUser
     this.postagem.usuario = this.user
 
-    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=>{
+    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem realizada com sucesso!')
+      alert('Postagem realizada com sucesso')
       this.postagem = new Postagem()
       this.getAllPostagens()
+      this.getAllTemas();
     })
   }
 
+  apagar(){
+    this.postagemService.deletePostagem(this.idPost).subscribe(()=>{
+      alert('Postagem apagadas com sucesso!')
+      this.router.navigate(['/inicio'])
+    })
+  }
+
+  atualizar(){
+    this.tema.id = this.idTema
+    this.postagem.tema = this.tema
+
+    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) =>{
+      this.postagem = resp
+      alert('Postagem atualizada com sucesso')
+      this.router.navigate(['/inicio'])
+    })
+  }
 
 }
