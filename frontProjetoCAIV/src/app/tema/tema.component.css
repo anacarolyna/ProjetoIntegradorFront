@@ -8,6 +8,10 @@
     font-size: 20px;
     color: white;
 }
+.borda {
+border: 0px;
+outline: none;
+}
 .sombrabox {
     box-shadow: inset 0 0 0em rgba(0, 0, 0, 0.103), 0 0 1ex #00000048;
 }
@@ -42,18 +46,4 @@
 }
 .fundo {
     background-color: #a828e4;  
-}
-.borda {
-    border: 0px;
-outline: none;
-}
-.closered:hover {
-    color: red;
-    box-shadow: -3px 3px rgba(0, 0, 0, 0.1) !important;
-}
-.hoversombra:hover {
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.116);
-}
-h1 {
-    text-shadow: 3px 3px rgba(0, 0, 0, 0.062) !important;
 }

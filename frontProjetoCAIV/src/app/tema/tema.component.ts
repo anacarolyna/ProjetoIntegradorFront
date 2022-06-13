@@ -3,26 +3,26 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
-import { Tema } from '../model/Tema';
 import { User } from '../model/User';
-import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
+import { Tema } from '../model/Tema';
+import { AuthService } from '../service/auth.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  selector: 'app-tema',
+  templateUrl: './tema.component.html',
+  styleUrls: ['./tema.component.css']
 })
-export class InicioComponent implements OnInit {
+export class TemaComponent implements OnInit {
+
 
   postagem: Postagem = new Postagem()
-  listaPostagens: Postagem[]
-
   tema: Tema = new Tema()
+  listaPostagens: Postagem[]
   listaTemas: Tema[]
-  idTema: number
 
+  idTema: number
   user: User = new User()
   idUser = environment.id
 
@@ -33,16 +33,35 @@ export class InicioComponent implements OnInit {
     private authService: AuthService,
     private http: HttpClient
 
-  ) { }
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(){
+    window.scroll(0,0)
     if(environment.token == ''){
-      alert('Sua seção expirou, Faça o login novamente')
-      this.router.navigate(['/login'])
+      this.router.navigate(["/login"])
+      
     }
 
-    this.getAllPostagens()
+    this.findAllTemas()
+  }
 
+  findAllTemas() {
+    this.temaService.getAllTema().subscribe(
+      (resp: Tema[]) =>{
+      this.listaTemas = resp
+      },
+    );
+  }
+
+  cadastrar() {
+      this.temaService.postTema(this.tema).subscribe({
+      next: (resp: Tema) =>{
+      this.tema = resp
+      alert('Tema cadastrado com sucesso!') // Mensagem pro usuário
+      this.findAllTemas()
+      this.tema = new Tema // Zera o campo após cadastrar um tema
+      },
+    });
   }
 
   getAllPostagens(){
@@ -62,9 +81,8 @@ export class InicioComponent implements OnInit {
       this.postagem = resp
       alert('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
+      this.router.navigate(['/inicio'])
       this.getAllPostagens()
     })
   }
-
-
 }

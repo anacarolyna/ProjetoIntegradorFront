@@ -1,103 +1,362 @@
 <div class="container-fluid fundo">
-    <div class="row nvh">
-        <div class="col-md-1 navh left ml-2 p-0 body-fundo br-15 mt-5 shadow" >
-            <aside>
-              <nav class="navbar left fixed-left navbar-light br-15">
-                <!-- <a class="navbar-brand" href="#"
-                  ><img
-                    class="ml-2 pb-2 img-fluid"
-                    src="https://i.imgur.com/vGkBvSO.png"
-                    alt=""
-                /></a> -->
+  
+  <div class="row nvh left">
+    <!-- NAVBAR LATERAL COM ICONES -->
+    <div class="col-md-1 left navh ml-2 p-0 body-fundo br-15 mt-5 shadow">
+      <aside>
+        <nav class="navbar fixed-left navbar-light br-15">
 
-                <div class=" navbar-nav pl-3 ">
-                  <a class="nav-link active" routerLink="inicio"
-                    ><i
-                      class="fi fi-sr-home icones pl-2"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Pagina inicial"
-                    ></i
-                  ></a>
-                  <a class="nav-link active" href="#"
-                    ><i
-                      class="fi fi-sr-add icones pl-2"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Nova postagem"
-                    ></i
-                  ></a>
-                  <a class="nav-link" href="#" routerLink=""
-                    ><i
-                      class="fi fi-sr-comment-user icones pl-2"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Minhas postagens"
-                    ></i
-                  ></a>
-                  <a class="nav-link" href="#" routerLink=""
-                    ><i
-                      class="fi fi-sr-apps-sort icones pl-2"
-                      data-toggle="tooltip"
-                      data-placement="right"
-                      title="Postagens por tema"
-                    ></i
-                  ></a>
-                </div>
-              </nav>
-            </aside>
+          <div class="navbar-nav pl-3">
+            <a class="nav-link active" routerLink="/inicio"
+              ><i
+                class="fi fi-sr-home icones pl-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Pagina inicial"
+              ></i
+            ></a>
+            <button class="nav-link active p-0 bg-transparent borda">
+              <i
+                class="fi fi-sr-user-add icones pl-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                data-toggle="modal"
+                data-target="#novaPostagem"
+                title="Nova postagem"
+              ></i>
+            </button>
+            <a class="nav-link" href=""
+              ><i
+                class="fi fi-sr-comment-user icones pl-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Minhas postagens"
+              ></i
+            ></a>
+            <a class="nav-link" href="#" routerLink=""
+              ><i
+                class="fi fi-sr-apps-sort icones pl-2"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Postagens por tema"
+              ></i
+            ></a>
           </div>
-
-
-              <div class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5">
-                <h1 class="text-center shadow-sm br-10 mt-3">Feed inicial</h1>
-                  
-                    <div class="col">
-                      
-                    <div class="card br-10 mt-5 mb-5" style="width: 35rem;">
-                        <div class="card-body p-1 sombrabox br-10">
-                            <div class="text-shadow">
-                                <span><h5 class="card-title bg-light sombra text-center br-10">Titulo</h5></span>
-                                    <h6 class="br-10 col-md-6 ml-1 card-subtitle bg-light text-muted">Por: (usuario) Assunto:(sei lá)</h6>
-                                </div>
-        
-                                <p class="card-text p-4 text-shadow">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <footer class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-5">
-                            <a href="#" class="card-link p-0 text-danger">Deletar</a>
-                            <a href="#" class="card-link p-0 text-primary">Editar</a>
-                          </footer>
-                            </div>
-        
-                        </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="card br-10 mt-5 mb-5" style="width: 35rem;">
-                        <div class="card-body p-1 sombrabox br-10">
-                            <div class="text-shadow">
-                                <span><h5 class="card-title bg-light sombra text-center br-10">Titulo</h5></span>
-                                    <h6 class="br-10 col-md-6 ml-1 card-subtitle bg-light text-muted">Por: (usuario) Assunto:(sei lá)</h6>
-                                </div>
-        
-                                <p class="card-text p-4 text-shadow">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <footer class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-5">
-                            <a href="#" class="card-link p-0 text-danger">Deletar</a>
-                            <a href="#" class="card-link p-0 text-primary">Editar</a>
-                          </footer>
-                            </div>
-        
-                        </div>
-                  </div>
-
-                  </div>
-              </div>
-
-        </div>
-    
-
-<!-- CARDS POSTAGEM-->
-<div class="container">
-    <div class="row">
-       
+        </nav>
+      </aside>
     </div>
+
+    <!-- CARD GROUP POSTAGENS -->
+    <div
+      class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
+    >
+      <h1 class="text-center br-10 mt-3 text-shadow">Feed inicial</h1>
+
+      <!-- CARD 1 -->
+      <div class="col">
+        <div class="card br-10 mt-5 mb-5" style="width: 35rem">
+          <div class="card-body p-1 sombrabox br-10">
+            <div class="text-shadow">
+              <span
+                ><h5 class="card-title bg-light sombra text-center br-10">
+                  Titulo
+                </h5></span
+              >
+              <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
+                Por: (usuario) Assunto:(sei lá)
+              </h6>
+            </div>
+
+            <p class="card-text p-4 text-shadow">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
+              Data: (data) Referência:
+            </h6>
+            <footer
+              class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+            >
+              <button
+                class="card-link p-0 text-danger bg-transparent borda hoversombra"
+                data-toggle="modal"
+                data-target="#deletar"
+              >
+                Deletar
+              </button>
+
+              <button
+              routerLink="/tema"
+                class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
+              >
+                Crie um tema
+              </button>
+
+              <button
+                class="card-link p-0 text-primary bg-transparent borda hoversombra"
+                data-toggle="modal"
+                data-target="#editar"
+              >
+                Editar
+              </button>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="col">
+        <div class="card br-10 mt-5 mb-5" style="width: 35rem">
+          <div class="card-body p-1 sombrabox br-10">
+            <div class="text-shadow">
+              <span
+                ><h5 class="card-title bg-light sombra text-center br-10">
+                  Titulo
+                </h5></span
+              >
+              <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
+                Por: (usuario) Assunto:(sei lá)
+              </h6>
+            </div>
+
+            <p class="card-text p-4 text-shadow">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <h6 class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted">
+              Data:(data) Referência:
+            </h6>
+            <footer
+              class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+            >
+              <button
+                class="card-link p-0 text-danger bg-transparent borda hoversombra"
+                data-toggle="modal"
+                data-target="#deletar"
+              >
+                Deletar
+              </button>
+
+              <button
+              routerLink="/tema"
+                class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
+              >
+                Crie um tema
+              </button>
+
+              <button
+                class="card-link p-0 text-primary bg-transparent borda hoversombra"
+                data-toggle="modal"
+                data-target="#editar"
+              >
+                Editar
+              </button>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL NOVA POSTAGEM-->
+<div
+  class="modal fade"
+  id="novaPostagem"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered borda">
+    <div class="modal-content br-10">
+      <div class="modal-header br-10 bg-light">
+        <h5 class="modal-title  text-shadow" id="novaPostagem">Nova Postagem</h5>
+        <button
+          type="button"
+          class="close closered borda br-10 "
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body ">
+        <div class="form-group">
+          <label for="titulo">Título:</label>
+          <input
+            [(ngModel)]="postagem.titulo"
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Digite o título"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="texto">Texto:</label>
+          <textarea
+            [(ngModel)]="postagem.texto"
+            class="form-control"
+            name=""
+            id=""
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-danger br-10 mr-3"
+            data-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary br-10"
+            (click)="publicar()"
+            data-dismiss="modal"
+          >
+            Publicar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDIT POSTAGENS -->
+<div
+  class="modal fade"
+  id="editar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-light br-10">
+        <h5 class="modal-title text-center text-shadow" id="editar">Editar postagem</h5>
+        <button
+          type="button"
+          class="close borda closered br-10"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="titulo">Título:</label>
+          <input
+            [(ngModel)]="postagem.titulo"
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Digite o título"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="texto">Texto:</label>
+          <textarea
+            [(ngModel)]="postagem.texto"
+            class="form-control"
+            name=""
+            id=""
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-danger br-10 mr-3"
+            data-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary br-10 "
+            (click)="publicar()"
+            data-dismiss="modal"
+          >
+            Editar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DELETE POSTAGENS -->
+
+<div
+  class="modal fade"
+  id="deletar"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content br-10">
+      <div class="modal-header br-10 bg-light">
+        <h5 class="modal-title text-shadow" id="deletar">Editar postagem</h5>
+        <button
+          type="button"
+          class="close borda closered br-10 "
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="titulo">Título:</label>
+          <input
+            [(ngModel)]="postagem.titulo"
+            type="text"
+            class="form-control"
+            id="titulo"
+            placeholder="Digite o título"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="texto">Texto:</label>
+          <textarea
+            [(ngModel)]="postagem.texto"
+            class="form-control"
+            name=""
+            id=""
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-danger br-10 mr-3"
+            data-dismiss="modal"
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary br-10"
+            (click)="publicar()"
+            data-dismiss="modal"
+          >
+            Deletar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
