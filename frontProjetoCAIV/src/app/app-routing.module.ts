@@ -21,6 +21,7 @@ const routes: Routes = [
 
   {path: 'user-edit/:id', component: UserEditComponent},
   {path: 'user-delete/:id', component: UserDeleteComponent},
+  
   {path: 'menu-on', component: MenuOnComponent},
   {path: 'tema', component: TemaComponent}
 ];

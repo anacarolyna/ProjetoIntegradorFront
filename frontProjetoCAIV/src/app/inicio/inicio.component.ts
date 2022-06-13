@@ -51,6 +51,12 @@ export class InicioComponent implements OnInit {
     })
   }
 
+  findByIdTema() {
+    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema)=>{
+      this.tema = resp
+    })
+  }
+
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema

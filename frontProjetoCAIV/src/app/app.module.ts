@@ -14,10 +14,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuOnComponent } from './menu-on/menu-on.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
-import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 import { TemaEditComponent } from './edit/tema-edit/tema-edit.component';
 import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component';
-import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { UserDeleteComponent } from './delete/user-delete/user-delete.component';
 import { TemaComponent } from './tema/tema.component';
 
@@ -32,11 +30,9 @@ import { TemaComponent } from './tema/tema.component';
     MenuOnComponent,
     InicioComponent,
     UserEditComponent,
-    PostagemEditComponent,
     TemaEditComponent,
     TemaDeleteComponent,
-    PostagemDeleteComponent,
-    UserDeleteComponent
+    UserDeleteComponent,
     TemaComponent
 
   ],

@@ -31,10 +31,10 @@ export class MenuOnComponent implements OnInit {
   }
 
   fotoUsuario(){
-    if(this.foto == ''){
-      this.foto = "https://i.imgur.com/rOmhIOT.png"
+    if(environment.foto == ''){
+      environment.foto = "https://i.imgur.com/rOmhIOT.png"
     }
-    return this.foto
+    return environment.foto
   }
 }
 
