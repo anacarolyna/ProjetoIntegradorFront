@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
-import { Tema } from '../model/Tema';
 import { User } from '../model/User';
-import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { Tema } from '../model/Tema';
 import { AuthService } from '../service/auth.service';
@@ -83,30 +81,8 @@ export class TemaComponent implements OnInit {
       this.postagem = resp
       alert('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
-      this.router.navigate(["/inicio"])
+      this.router.navigate(['/inicio'])
       this.getAllPostagens()
     })
-    }
-
-    this.findAllTemas()
-  }
-
-  findAllTemas() {
-    this.temaService.getAllTema().subscribe(
-      (resp: Tema[]) =>{
-      this.listaTemas = resp
-      },
-    );
-  }
-
-  cadastrar() {
-      this.temaService.postTema(this.tema).subscribe({
-      next: (resp: Tema) =>{
-      this.tema = resp
-      alert('Tema cadastrado com sucesso!') // Mensagem pro usuário
-      this.findAllTemas()
-      this.tema = new Tema // Zera o campo após cadastrar um tema
-      },
-    });
   }
 }

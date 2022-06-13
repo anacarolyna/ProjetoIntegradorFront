@@ -26,6 +26,7 @@
                 title="Nova postagem"
               ></i>
             </button>
+
             <a class="nav-link" href=""
                
               ><i
@@ -35,6 +36,7 @@
                 title="Minhas postagens"
               ></i
             ></a>
+
             <a class="nav-link" href="#" routerLink=""
               ><i
                 class="fi fi-sr-apps-sort icones pl-2"
@@ -118,28 +120,9 @@ aria-hidden="true"
     <div
       class="card-group-list list  mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
     >
-      <h1 class="text-center shadow-sm br-10 mt-3  tex-shadow">TEMAS</h1>
-      <div class="shadow-sm br-10">
-        <h5 class="fs-18 text-center text-shadow bg-light br-10 mt-1 p-2 mr-3 ml-3">
-          Veja aqui todos os temas cadastrados ou cadastre um novo:
-        </h5>
-  
-      <div class="row d-flex justify-content-center mt-4 mb-3">
-          <div class="col-md-10 mb-3 text-center">
-              <div class="form-group">
-                  <input [(ngModel)]="tema.descricao" type="text" class="form-control text-center" 
-                  id="descricao" placeholder="Digite a descrição do tema">
-              </div>
-              <div class="d-flex justify-content-center">
-                  <button class="btn btn-success br-10 pb-2" (click)="cadastrar()">Cadastrar</button>
-              </div>
-          </div>
-      </div>
-      </div>
-  
 
       <div class="row d-flex justify-content-center">
-        <div class="col-md-12 mb-3 br-10 shadow-sm d-flex justify-content-center">
+        <div class="col-md-12 mb-3 br-10 d-flex justify-content-center">
     <div
       class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
     >
@@ -149,57 +132,61 @@ aria-hidden="true"
         Veja aqui todos os temas cadastrados ou cadastre um novo:
       </h5>
 
-    <div class="row d-flex justify-content-center mt-4 mb-5">
+    <div class="row d-flex justify-content-center shadow-sm br-10 mt-4 mb-5">
         <div class="col-md-10 text-center">
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <input [(ngModel)]="tema.descricao" type="text" class="form-control text-center" 
                 id="descricao" placeholder="Digite a descrição do tema">
             </div>
             <div class="d-flex justify-content-center">
-                <button class="btn btn-success" (click)="cadastrar()">Cadastrar</button>
+                <button class="btn btn-success br-10" (click)="cadastrar()">Cadastrar</button>
             </div>
         </div>
+
+<!-- TABELA -->
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8 mt-3 mb-5 p-10 d-flex justify-content-center">
+            
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col" class="fcO">#</th>
+                  <th scope="col" class="fcO">Descrição</th>
+                  <th scope="col" class="fcO text-center">Modificações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tema of listaTemas">
+                  <!--  cada 'tr' é uma linha da minha tabela -->
+                  <th>{{tema.id}}</th>
+                  <td>{{tema.descricao}}</td>
+                  <td class="d-flex justify-content-end">
+                    <button
+  
+                      class="btn btn-primary mr-3 br-10"
+  
+                      [routerLink]="['/tema-edit', tema.id]"
+                    >
+                      Editar
+                    </button>
+                    <button
+                            
+                      class="btn btn-danger br-10"
+  
+                      [routerLink]="['/tema-delete', tema.id]"
+                    >
+                      Apagar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> <!--  FIM DA TABELA -->
+
     </div>
 
-      <div class="row d-flex justify-content-center">
-        <div class="col-md-6 mt-3 mb-5 p-10 d-flex justify-content-center">
-          
-          <table class="table table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col" class="fcO">#</th>
-                <th scope="col" class="fcO">Descrição</th>
-                <th scope="col" class="fcO text-center">Modificações</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let tema of listaTemas">
-                <!--  cada 'tr' é uma linha da minha tabela -->
-                <th>{{tema.id}}</th>
-                <td>{{tema.descricao}}</td>
-                <td class="d-flex justify-content-end">
-                  <button
-
-                    class="btn btn-primary mr-3 br-10"
-
-                    [routerLink]="['/tema-edit', tema.id]"
-                  >
-                    Editar
-                  </button>
-                  <button
-                          
-                    class="btn btn-danger br-10"
-
-                    [routerLink]="['/tema-delete', tema.id]"
-                  >
-                    Apagar
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   </div>
 </div>
