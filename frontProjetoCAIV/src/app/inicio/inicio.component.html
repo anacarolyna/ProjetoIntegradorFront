@@ -46,8 +46,9 @@
       </aside> -->
       <div class="nav flex-column nav-pills text-white" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" data-toggle="modal"
+        data-target="#novaPostagem">Nova Postagem</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Editar Postagem</a>
         <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
       </div>
 
@@ -58,7 +59,7 @@
 
     </div>
 
-    <!-- CARD GROUP POSTAGENS -->
+<!-- CARD GROUP POSTAGENS -->
     <div
       class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
     >
@@ -171,13 +172,11 @@
           <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
         </div>
-        
       </div>
-
-      <!-- CARD 2 -->
     </div>
   </div>
 </div>
+<!-- CARD GROUP POSTAGEM -->
 
 <!-- MODAL NOVA POSTAGEM-->
 <div
@@ -218,10 +217,21 @@
           <textarea
             [(ngModel)]="postagem.texto"
             class="form-control"
-            name=""
-            id=""
+            name="texto"
+            id="texto"
             rows="3"
           ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="tema">Escolha seu tema ou <a routerLink="/tema" data-dismiss="modal">
+              cadastre um novo</a>:
+          </label>
+          <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()"
+            name="tema" id="tema">
+              <option *ngFor="let item of listaTemas" value="{{item.id}}">
+                {{item.descricao}}
+              </option>
+          </select>
         </div>
 
         <div class="d-flex justify-content-center">
@@ -312,9 +322,9 @@
     </div>
   </div>
 </div>
+<!-- MODAL EDIT POSTAGENS -->
 
 <!-- MODAL DELETE POSTAGENS -->
-
 <div
   class="modal fade"
   id="deletar"
@@ -380,3 +390,4 @@
     </div>
   </div>
 </div>
+<!-- MODAL DELETE POSTAGENS -->
