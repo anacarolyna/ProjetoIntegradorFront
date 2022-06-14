@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
@@ -34,27 +33,35 @@ export class InicioComponent implements OnInit {
     private temaService: TemaService,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private http: HttpClient
+
 
   ) { }
 
   ngOnInit() {
     if(environment.token == ''){
-      alert('Sua seção expirou, Faça o login novamente')
+      //alert('Sua seção expirou, Faça o login novamente')
       this.router.navigate(['/login'])
     }
 
     this.idPost = this.route.snapshot.params['id']
     this.findByIdPostagem(this.idPost)
 
-    this.getAllPostagens()
+    this.authService.refreshToken()
     this.getAllTemas()
-
+    this.getAllPostagens()
   }
 
   getAllPostagens(){
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[])=>{
       this.listaPostagens = resp
+    })
+  }
+
+  findByIdUser() {
+    this.authService.entrar
+    this.authService.logado
+    this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
+      this.user = resp
     })
   }
 
