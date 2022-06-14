@@ -2,47 +2,7 @@
   <div class="row nvh left">
     <!-- NAVBAR LATERAL COM ICONES -->
     <div class="col-md-1 left navh ml-2 mb-5 p-0 body-fundo br-15 mt-5 shadow">
-      <!-- <aside>
-        <nav class="navbar fixed-left navbar-light br-15">
-
-          <div class="navbar-nav pl-3">
-            <a class="nav-link active" routerLink="/inicio"
-              ><i
-                class="fi fi-sr-home icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Pagina inicial"
-              ></i
-            ></a>
-            <button class="nav-link active p-0 bg-transparent borda">
-              <i
-                class="fi fi-sr-user-add icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                data-toggle="modal"
-                data-target="#novaPostagem"
-                title="Nova postagem"
-              ></i>
-            </button>
-            <a class="nav-link" href=""
-              ><i
-                class="fi fi-sr-comment-user icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Minhas postagens"
-              ></i
-            ></a>
-            <a class="nav-link" href="#" routerLink=""
-              ><i
-                class="fi fi-sr-apps-sort icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Postagens por tema"
-              ></i
-            ></a>
-          </div>
-        </nav>
-      </aside> -->
+      
       <div
         class="nav flex-column nav-pills text-white pl-3"
         id="v-pills-tab"
@@ -115,63 +75,21 @@
           >
             <!-- HOME -->
 
-            <div class="card br-10 mt-5 mb-5" *ngFor="let postagem of listaPostagens" style="width: 35rem">
-              <div class="card-body p-1 sombrabox br-10">
-                <div class="text-shadow">
-                  <span
-                    ><h5 class="card-title bg-light sombra text-center br-10">
-                      {{ postagem.titulo }}
-                    </h5></span
-                  >
-
-                  <p class="card-text p-4 text-shadow">
-                    {{ postagem.texto }}
-                  </p>
-
-                  <h6
-                  class="br-10 col-md-6 ml-1 mb-1 card-subtitle shadow-none bg-light text-muted"
-                >
-                  Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "HH:mm" }}
-                </h6>
-
-                  <h6
-                    class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-                  >
-                    Por: {{ postagem.usuario.nome }} Assunto:
-                    {{ postagem.tema.descricao }}
-                  </h6>
+            <div class="card br-10 mb-4" style="width: 35rem;" *ngFor="let postagem of listaPostagens">
+              <div class="card-body p-0 m-0">
+                <h5 class="card-title bg-light shadow-sm br-10 text-center text-shadow">{{postagem.titulo}}</h5>
+                <h6 class="card-subtitle  text-muted shadow-none bg-light ml-1 col-md-5">Tema:{{postagem.tema.descricao}} Por: usuario</h6>
+                <p class="card-text p-4">{{postagem.texto}}</p>
+                <h6 class="card-subtitle mb-1 text-muted shadow-none ml-1 bg-light col-md-5">Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "HH:mm" }}</h6>
+                <div class="bg-light shadow-sm d-flex justify-content-center br-10">
+                  <a href="#" class="card-link text-danger hoversombra">Deletar</a>
+                <a href="#" class="card-link text-primary hovversombra">Editar</a>
                 </div>
-
-                
-                <footer
-                  class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
-                >
-                  <button
-                    class="card-link p-0 text-danger bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#deletar"
-                  >
-                    Deletar
-                  </button>
-
-                  <button
-                    routerLink="/tema"
-                    class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
-                  >
-                    Crie um tema
-                  </button>
-
-                  <button
-                    class="card-link p-0 text-primary bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#editar"
-                  >
-                    Editar
-                  </button>
-                </footer>
               </div>
             </div>
+
+           
           </div>
           <!-- HOME -->
 
@@ -188,63 +106,21 @@
             aria-labelledby="v-pills-messages-tab"
           >
             <!-- Minhas postagens -->
-            <div class="card br-10 mt-5 mb-5" *ngFor="let user of user.postagem" style="width: 35rem">
-              <div class="card-body p-1 sombrabox br-10">
-                <div class="text-shadow">
-                  <span
-                    ><h5 class="card-title bg-light sombra text-center br-10">
-                      {{ user.titulo }}
-                    </h5></span
-                  >
-
-                  <h6
-                    class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-                  >
-                     Assunto:
-                    {{ user.tema.descricao }}
-                  </h6>
-
-                  <p class="card-text p-4 text-shadow">
-                    {{ user.texto }}
-                  </p>
-
-                  
+           
+              <div class="card br-10 mb-4" style="width: 35rem;" *ngFor="let user of user.postagem">
+                <div class="card-body p-0 m-0">
+                  <h5 class="card-title bg-light shadow-sm br-10 text-center text-shadow">{{postagem.titulo}}</h5>
+                  <h6 class="card-subtitle  text-muted shadow-none bg-light ml-1 col-md-5">Tema:{{postagem.tema.descricao}} Por: usuario</h6>
+                  <p class="card-text p-4">{{postagem.texto}}</p>
+                  <h6 class="card-subtitle mb-1 text-muted shadow-none ml-1 bg-light col-md-5">Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                    {{ postagem.data | date: "HH:mm" }}</h6>
+                  <div class="bg-light shadow-sm d-flex justify-content-center br-10">
+                    <a href="#" class="card-link text-danger hoversombra">Deletar</a>
+                  <a href="#" class="card-link text-primary hovversombra">Editar</a>
+                  </div>
                 </div>
-
-                <h6
-                  class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-                >
-                  Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "HH:mm" }}
-                </h6>
-                <footer
-                  class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
-                >
-                  <button
-                    class="card-link p-0 text-danger bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#deletar"
-                  >
-                    Deletar
-                  </button>
-
-                  <button
-                    routerLink="/tema"
-                    class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
-                  >
-                    Crie um tema
-                  </button>
-
-                  <button
-                    class="card-link p-0 text-primary bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#editar"
-                  >
-                    Editarrrr
-                  </button>
-                </footer>
               </div>
-            </div>
+            
             <!-- Minhas postagens -->
           </div>
           <div
@@ -254,62 +130,20 @@
             aria-labelledby="v-pills-settings-tab"
           >
             <!-- Postagens por tema -->
-            <div class="card br-10 mt-5 mb-5" style="width: 35rem" *ngFor="let temaLista of listaTemas">
-              <div class="card-body p-1 sombrabox br-10" *ngFor="let tema of tema.postagem">
-                <div class="text-shadow">
-                  <span
-                    ><h5 class="card-title bg-light sombra text-center br-10">
-                      {{ tema.titulo }}
-                    </h5></span
-                  >
-
-                  <p class="card-text p-4 text-shadow">
-                    {{ tema.texto }}
-                  </p>
-
-                  <h6
-                    class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-                  >
-                    Por: {{ tema.usuario.nome }} Assunto:
-                  </h6>
+            <div class="card br-10 mb-4" style="width: 35rem;" *ngFor="let temaLista of listaTemas">
+              <div class="card-body p-0 m-0">
+                <h5 class="card-title bg-light shadow-sm br-10 text-center text-shadow">{{postagem.titulo}}</h5>
+                <h6 class="card-subtitle  text-muted shadow-none bg-light ml-1 col-md-5">Tema:{{postagem.tema.descricao}} Por: usuario</h6>
+                <p class="card-text p-4">{{postagem.texto}}</p>
+                <h6 class="card-subtitle mb-1 text-muted shadow-none ml-1 bg-light col-md-5">Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "HH:mm" }}</h6>
+                <div class="bg-light shadow-sm d-flex justify-content-center br-10">
+                  <a href="#" class="card-link text-danger hoversombra">Deletar</a>
+                <a href="#" class="card-link text-primary hovversombra">Editar</a>
                 </div>
-
-                <h6
-                  class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-                >
-                  Data:{{ tema.data | date: "dd/MM/yyyy" }} às
-                  {{ tema.data | date: "HH:mm" }}
-                </h6>
-                <footer
-                  class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
-                >
-                  <button
-                    class="card-link p-0 text-danger bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#deletar"
-                  >
-                    Deletar
-                  </button>
-
-                  <button
-                    routerLink="/tema"
-                    class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
-                  >
-                    Crie um temaaa
-                  </button>
-
-                  <button
-                    class="card-link p-0 text-primary bg-transparent borda hoversombra"
-                    data-toggle="modal"
-                    data-target="#editar"
-                  >
-                    Editar
-                  </button>
-                </footer>
               </div>
             </div>
             <!-- Postagens por tema -->
-
 
           </div>
         </div>
