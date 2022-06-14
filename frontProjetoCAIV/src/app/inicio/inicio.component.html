@@ -2,6 +2,7 @@
   <div class="row nvh left">
     <!-- NAVBAR LATERAL COM ICONES -->
     <div class="col-md-1 left navh ml-2 mb-5 p-0 body-fundo br-15 mt-5 shadow">
+
       <!-- <aside>
         <nav class="navbar fixed-left navbar-light br-15">
 
@@ -57,6 +58,7 @@
         <a class="nav-link" data-toggle="tooltip" data-placement="right" title="Postagens por tema"
           id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
           aria-controls="v-pills-settings" aria-selected="false"><i class="fi fi-sr-apps-sort icones pl-2"></i></a>
+
       </div>
     </div>
 
@@ -107,15 +109,19 @@
                     </button>
 
                   </div>
+
                 </div>
               </div>
             </div>
+
+           
           </div>
           <!-- HOME -->
 
           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"></div>
           <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
             <!-- Minhas postagens -->
+
             <div class="card br-10 mt-5 mb-5" *ngFor="let user of user.postagem" style="width: 35rem">
               <div class="card-body p-1 sombrabox br-10">
                 <div class="text-shadow">
@@ -156,12 +162,14 @@
                     Editarrrr
                   </button>
                 </footer>
+
               </div>
-            </div>
+            
             <!-- Minhas postagens -->
           </div>
           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
             <!-- Postagens por tema -->
+
             <div class="card br-10 mt-5 mb-5" style="width: 35rem" *ngFor="let temaLista of listaTemas">
               <div class="card-body p-1 sombrabox br-10" *ngFor="let tema of tema.postagem">
                 <div class="text-shadow">
@@ -198,7 +206,6 @@
               </div>
             </div>
             <!-- Postagens por tema -->
-
 
           </div>
         </div>
