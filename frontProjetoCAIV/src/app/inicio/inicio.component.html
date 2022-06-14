@@ -1,7 +1,7 @@
 <div class="container-fluid fundo">
   <div class="row nvh left">
     <!-- NAVBAR LATERAL COM ICONES -->
-    <div class="col-md-1 left navh ml-2 p-0 body-fundo br-15 mt-5 shadow">
+    <div class="col-md-1 left navh ml-2 mb-5 p-0 body-fundo br-15 mt-5 shadow">
       <!-- <aside>
         <nav class="navbar fixed-left navbar-light br-15">
 
@@ -51,16 +51,18 @@
       >
         <a
           class="nav-link active"
+          data-toggle="tooltip" data-placement="right" title="Pagina inicial"
           id="v-pills-home-tab"
           data-toggle="pill"
           href="#v-pills-home"
           role="tab"
           aria-controls="v-pills-home"
           aria-selected="true"
-          ><i class="fi fi-sr-home icones pl-2"></i></a
-        >
+          ><i class="fi fi-sr-home icones pl-2"></i
+        ></a>
         <a
           class="nav-link"
+          data-toggle="tooltip" data-placement="right" title="Nova postagem"
           id="v-pills-profile-tab"
           data-toggle="pill"
           href="#v-pills-profile"
@@ -69,35 +71,36 @@
           aria-selected="false"
           data-toggle="modal"
           data-target="#novaPostagem"
-          ><i class="fi fi-sr-user-add icones pl-2"></i></a
-        >
+          ><i class="fi fi-sr-user-add icones pl-2"></i
+        ></a>
         <a
           class="nav-link"
+          data-toggle="tooltip" data-placement="right" title="Minhas postagens"
           id="v-pills-messages-tab"
           data-toggle="pill"
           href="#v-pills-messages"
           role="tab"
           aria-controls="v-pills-messages"
           aria-selected="false"
-          ><i class="fi fi-sr-comment-user icones pl-2"></i></a
-        >
+          ><i class="fi fi-sr-comment-user icones pl-2"></i
+        ></a>
         <a
           class="nav-link"
+          data-toggle="tooltip" data-placement="right" title="Postagens por tema"
           id="v-pills-settings-tab"
           data-toggle="pill"
           href="#v-pills-settings"
           role="tab"
           aria-controls="v-pills-settings"
           aria-selected="false"
-          ><i class="fi fi-sr-apps-sort icones pl-2"></i></a
-        >
+          ><i class="fi fi-sr-apps-sort icones pl-2"></i
+        ></a>
       </div>
     </div>
 
     <!-- CARD GROUP POSTAGENS -->
     <div
       class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5"
-      *ngFor="let postagem of listaPostagens"
     >
       <h1 class="text-center br-10 mt-3 text-shadow">Feed inicial</h1>
 
@@ -111,7 +114,8 @@
             aria-labelledby="v-pills-home-tab"
           >
             <!-- HOME -->
-            <div class="card br-10 mt-5 mb-5" style="width: 35rem">
+
+            <div class="card br-10 mt-5 mb-5" *ngFor="let postagem of listaPostagens" style="width: 35rem">
               <div class="card-body p-1 sombrabox br-10">
                 <div class="text-shadow">
                   <span
@@ -125,6 +129,13 @@
                   </p>
 
                   <h6
+                  class="br-10 col-md-6 ml-1 mb-1 card-subtitle shadow-none bg-light text-muted"
+                >
+                  Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "HH:mm" }}
+                </h6>
+
+                  <h6
                     class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
                   >
                     Por: {{ postagem.usuario.nome }} Assunto:
@@ -132,12 +143,7 @@
                   </h6>
                 </div>
 
-                <h6
-                  class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-                >
-                  Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
-                  {{ postagem.data | date: "HH:mm" }}
-                </h6>
+                
                 <footer
                   class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
                 >
@@ -174,72 +180,72 @@
             id="v-pills-profile"
             role="tabpanel"
             aria-labelledby="v-pills-profile-tab"
-          >
-            
-          </div>
+          ></div>
           <div
             class="tab-pane fade"
             id="v-pills-messages"
             role="tabpanel"
             aria-labelledby="v-pills-messages-tab"
           >
-          <!-- Minhas postagens -->
-          <div class="card br-10 mt-5 mb-5" style="width: 35rem">
-            <div class="card-body p-1 sombrabox br-10">
-              <div class="text-shadow">
-                <span
-                  ><h5 class="card-title bg-light sombra text-center br-10">
-                    {{ postagem.titulo }}
-                  </h5></span
-                >
+            <!-- Minhas postagens -->
+            <div class="card br-10 mt-5 mb-5" *ngFor="let user of user.postagem" style="width: 35rem">
+              <div class="card-body p-1 sombrabox br-10">
+                <div class="text-shadow">
+                  <span
+                    ><h5 class="card-title bg-light sombra text-center br-10">
+                      {{ user.titulo }}
+                    </h5></span
+                  >
 
-                <p class="card-text p-4 text-shadow">
-                  {{ postagem.texto }}
-                </p>
+                  <h6
+                    class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+                  >
+                     Assunto:
+                    {{ user.tema.descricao }}
+                  </h6>
+
+                  <p class="card-text p-4 text-shadow">
+                    {{ user.texto }}
+                  </p>
+
+                  
+                </div>
 
                 <h6
                   class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
                 >
-                  Por: {{ postagem.usuario.nome }} Assunto:
-                  {{ postagem.tema.descricao }}
+                  Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
+                  {{ postagem.data | date: "HH:mm" }}
                 </h6>
+                <footer
+                  class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+                >
+                  <button
+                    class="card-link p-0 text-danger bg-transparent borda hoversombra"
+                    data-toggle="modal"
+                    data-target="#deletar"
+                  >
+                    Deletar
+                  </button>
+
+                  <button
+                    routerLink="/tema"
+                    class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
+                  >
+                    Crie um tema
+                  </button>
+
+                  <button
+                    class="card-link p-0 text-primary bg-transparent borda hoversombra"
+                    data-toggle="modal"
+                    data-target="#editar"
+                  >
+                    Editarrrr
+                  </button>
+                </footer>
               </div>
-
-              <h6
-                class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-              >
-                Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
-                {{ postagem.data | date: "HH:mm" }}
-              </h6>
-              <footer
-                class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
-              >
-                <button
-                  class="card-link p-0 text-danger bg-transparent borda hoversombra"
-                  data-toggle="modal"
-                  data-target="#deletar"
-                >
-                  Deletar
-                </button>
-
-                <button
-                  routerLink="/tema"
-                  class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
-                >
-                  Crie um tema
-                </button>
-
-                <button
-                  class="card-link p-0 text-primary bg-transparent borda hoversombra"
-                  data-toggle="modal"
-                  data-target="#editar"
-                >
-                  Editarrrr
-                </button>
-              </footer>
             </div>
-          </div>
-          <!-- Minhas postagens -->
+            <!-- Minhas postagens -->
           </div>
           <div
             class="tab-pane fade"
@@ -247,63 +253,64 @@
             role="tabpanel"
             aria-labelledby="v-pills-settings-tab"
           >
-          <!-- Postagens por tema -->
-          <div class="card br-10 mt-5 mb-5" style="width: 35rem">
-            <div class="card-body p-1 sombrabox br-10">
-              <div class="text-shadow">
-                <span
-                  ><h5 class="card-title bg-light sombra text-center br-10">
-                    {{ postagem.titulo }}
-                  </h5></span
-                >
+            <!-- Postagens por tema -->
+            <div class="card br-10 mt-5 mb-5" style="width: 35rem" *ngFor="let temaLista of listaTemas">
+              <div class="card-body p-1 sombrabox br-10" *ngFor="let tema of tema.postagem">
+                <div class="text-shadow">
+                  <span
+                    ><h5 class="card-title bg-light sombra text-center br-10">
+                      {{ tema.titulo }}
+                    </h5></span
+                  >
 
-                <p class="card-text p-4 text-shadow">
-                  {{ postagem.texto }}
-                </p>
+                  <p class="card-text p-4 text-shadow">
+                    {{ tema.texto }}
+                  </p>
+
+                  <h6
+                    class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
+                  >
+                    Por: {{ tema.usuario.nome }} Assunto:
+                  </h6>
+                </div>
 
                 <h6
                   class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
                 >
-                  Por: {{ postagem.usuario.nome }} Assunto:
-                  {{ postagem.tema.descricao }}
+                  Data:{{ tema.data | date: "dd/MM/yyyy" }} às
+                  {{ tema.data | date: "HH:mm" }}
                 </h6>
+                <footer
+                  class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
+                >
+                  <button
+                    class="card-link p-0 text-danger bg-transparent borda hoversombra"
+                    data-toggle="modal"
+                    data-target="#deletar"
+                  >
+                    Deletar
+                  </button>
+
+                  <button
+                    routerLink="/tema"
+                    class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
+                  >
+                    Crie um temaaa
+                  </button>
+
+                  <button
+                    class="card-link p-0 text-primary bg-transparent borda hoversombra"
+                    data-toggle="modal"
+                    data-target="#editar"
+                  >
+                    Editar
+                  </button>
+                </footer>
               </div>
-
-              <h6
-                class="br-10 col-md-6 ml-1 card-subtitle shadow-none bg-light text-muted"
-              >
-                Data:{{ postagem.data | date: "dd/MM/yyyy" }} às
-                {{ postagem.data | date: "HH:mm" }}
-              </h6>
-              <footer
-                class="d-flex bg-light sombra br-10 justify-content-center mb-0 mt-1"
-              >
-                <button
-                  class="card-link p-0 text-danger bg-transparent borda hoversombra"
-                  data-toggle="modal"
-                  data-target="#deletar"
-                >
-                  Deletar
-                </button>
-
-                <button
-                  routerLink="/tema"
-                  class="card-link p-0 text-dark pl-2 pr-2 bg-transparent borda hoversombra"
-                >
-                  Crie um temaaa
-                </button>
-
-                <button
-                  class="card-link p-0 text-primary bg-transparent borda hoversombra"
-                  data-toggle="modal"
-                  data-target="#editar"
-                >
-                  Editar
-                </button>
-              </footer>
             </div>
-          </div>
-          <!-- Postagens por tema -->
+            <!-- Postagens por tema -->
+
+
           </div>
         </div>
       </div>
@@ -407,14 +414,14 @@
   aria-hidden="true"
 >
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">
+    <div class="modal-content br-10">
+      <div class="modal-header bg-light text-shadow br-10">
+        <h5 class="modal-title text-center" id="exampleModalCenterTitle">
           Apagar postagem
         </h5>
         <button
           type="button"
-          class="close"
+          class="close closered borda br-10"
           data-dismiss="modal"
           aria-label="Close"
         >
@@ -460,13 +467,13 @@
           </select>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">
+      <div class=" d-flex justify-content-center mb-3">
+        <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
           Cancelar
         </button>
         <button
           type="button"
-          class="btn btn-success"
+          class="btn btn-success br-10"
           (click)="atualizar()"
           data-dismiss="modal"
         >
