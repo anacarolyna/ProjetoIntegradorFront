@@ -12,3 +12,11 @@
 a{
     cursor: pointer;
 }
+
+.bg-nav {
+    background-color: #724792  !important;
+}
+
+.bg-pag {
+    background-color: #E0C8FC !important;
+}
