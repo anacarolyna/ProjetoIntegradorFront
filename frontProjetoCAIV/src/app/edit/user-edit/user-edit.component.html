@@ -9,7 +9,8 @@
 
 
                         <label for="nome">Nome</label>
-                        <input class="form-control" type="text" name="nome" id="nome" placeholder="Seu nome" />
+                        <input [(ngModel)]="user.nome" class="form-control" type="text" name="nome" id="nome"
+                            placeholder="Seu nome" />
                     </div>
 
                     <!-- /edição do nome do usuário -->
@@ -18,7 +19,8 @@
 
                     <div class="form-group shadow-sm box-shadow text-dark">
                         <label for="usuario">Usuário</label>
-                        <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Seu e-mail" />
+                        <input [(ngModel)]="user.usuario" class="form-control" type="text" name="usuario" id="usuario"
+                            placeholder="Seu e-mail" />
                     </div>
 
                     <!-- /edição do e-mail do usuário -->
@@ -26,22 +28,24 @@
                     <!-- troca da foto do usuário -->
                     <div class="form-group shadow-sm box-shadow text-dark">
                         <label for="foto">Link da Foto</label>
-                        <input class="form-control" type="text" name="foto" id="foto" placeholder="Link da sua foto" />
+                        <input [(ngModel)]="user.foto" class="form-control" type="text" name="foto" id="foto"
+                            placeholder="Link da sua foto" />
                     </div>
                     <!-- /troca da foto do usuário -->
 
                     <!-- troca da senha do usuário -->
                     <div class="form-group shadow-sm box-shadow text-dark">
                         <label for="senha">Senha</label>
-                        <input class="form-control" type="password" name="senha" id="senha" placeholder="Sua senha" />
+                        <input (input)="confirmaSenha($event)" class="form-control" type="password" name="senha"
+                            id="senha" placeholder="Sua senha" />
                     </div>
                     <!-- /troca da senha do usuário -->
 
                     <!-- confirmação troca da senha do usuário -->
                     <div class="form-group shadow-sm box-shadow text-dark">
                         <label for="confirmSenha">Confirmar Senha</label>
-                        <input class="form-control" type="password" name="confirmSenha" id="confirmSenha"
-                            placeholder="Confirme sua senha" />
+                        <input [(ngModel)]="user.senha" class="form-control" type="password" name="confirmSenha"
+                            id="confirmSenha" placeholder="Confirme sua senha" />
                     </div>
                     <!-- /confirmação troca da senha do usuário -->
 
@@ -58,10 +62,11 @@
 
                     <!-- botões de confirmação e cancelar -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-danger mr-4 shadow-sm" routerLink="/login">
+                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-danger mr-4 shadow-sm"
+                            routerLink="/inicio">
                             Cancelar
                         </button>
-                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-primary shadow-sm">
+                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-primary shadow-sm" (click)="atualizar()">
                             Cadastrar
                         </button>
                     </div>
@@ -69,7 +74,7 @@
 
                     <!-- indicação para a exclusão do cadastro -->
                     <div class="d-flex justify-content-center text-dark my-3">
-                        <p>Se deseja excluir o seu cadastro clique <a href="">aqui</a></p>
+                        <p>Se deseja excluir o seu cadastro clique <a [routerLink]="['/user-delete', id]">aqui</a></p>
                     </div>
                     <!-- /indicação para a exclusão do cadastro -->
 

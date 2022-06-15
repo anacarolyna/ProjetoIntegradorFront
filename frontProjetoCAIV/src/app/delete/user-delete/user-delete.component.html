@@ -9,23 +9,23 @@
                         <h5>Tem certeza que deseja deletar o usuário?</h5>
 
                         <!-- nome do usuário -->
-                        <h3 class="my-5">Nome do Usuário</h3>
+                        <h3 class="my-5">{{nome}}</h3>
                         <!-- /nome do usuário -->
 
                     </div>
 
                     <!-- mensagem de confirmação -->
                     <div class="text-center text-dark">
-                        <h6 class="my-5">Com a exclusão dele todas as postagens feitas por ele serão apagados</h6>
+                        <h6 class="my-5">Com a exclusão dele todas as postagens feitas por ele serão apagadas</h6>
                     </div>
                     <!-- /mensagem de confirmação -->
 
                     <!-- botões de contimação -->
                     <div class="d-flex justify-content-center my-5">
-                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-danger mr-4 shadow-sm" routerLink="/login">
+                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-danger mr-4 shadow-sm" [routerLink]="['/user-edit', id]">
                             Cancelar
                         </button>
-                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-primary shadow-sm">
+                        <button type="submit" class="mb-2 br-15 bw-2 btn btn-primary shadow-sm" (click)="apagar()">
                             Confirmar
                         </button>
                     </div>

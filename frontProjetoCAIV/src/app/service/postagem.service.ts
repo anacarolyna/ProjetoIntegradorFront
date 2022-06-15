@@ -40,4 +40,10 @@ export class PostagemService {
     return this.http.delete(`http://localhost:8080/postagem/${id}`, this.token)
   }
 
+  refreshToken(){
+    this.token = {
+      headers: new HttpHeaders().set('Authorization', environment.token)
+    }
+  }
+
 }
