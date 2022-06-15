@@ -9,71 +9,72 @@
           <div class="navbar-nav pl-3">
             <a class="nav-link active" routerLink="/inicio"><i class="fi fi-sr-home icones pl-2" data-toggle="tooltip"
                 data-placement="right" title="Pagina inicial"></i></a>
-
-            <button class="nav-link active p-0 bg-transparent borda">
-              <i class="fi fi-sr-add icones pl-2" data-toggle="tooltip" data-placement="right" data-toggle="modal"
-                data-target="#novaPostagem" title="Nova postagem"></i>
-            </button>
-
-            <a class="nav-link" href=""><i class="fi fi-sr-comment-user icones pl-2" data-toggle="tooltip"
-                data-placement="right" title="Minhas postagens"></i></a>
-
-            <a class="nav-link" href="#" routerLink=""><i class="fi fi-sr-apps-sort icones pl-2" data-toggle="tooltip"
-                data-placement="right" title="Postagens por tema"></i></a>
           </div>
         </nav>
       </aside>
     </div>
 
     <!-- MODAL NOVA POSTAGEM-->
-    <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered borda">
-        <div class="modal-content br-10">
-          <div class="modal-header br-10 bg-nav">
-            <h5 class="modal-title  text-shadow" id="novaPostagem">Nova Postagem</h5>
-            <button type="button" class="close closered borda br-10 " data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+  <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered borda">
+      <div class="modal-content br-10">
+        <div class="modal-header br-10 bg-pag">
+          <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
+          <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
+              placeholder="Digite o título" />
+          </div>
+
+          <div class="form-group">
+            <label for="texto">Texto:</label>
+            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tema">Escolha seu tema ou
+              <a routerLink="/tema" data-dismiss="modal"> cadastre um novo</a>:
+            </label>
+            <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
+              <option *ngFor='let item of listaTemas' value="{{item.id}}">
+                {{ item.descricao }}
+              </option>
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
+              Publicar
             </button>
           </div>
-
-          <div class="modal-body ">
-            <div class="form-group">
-              <label for="titulo">Título:</label>
-              <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
-                placeholder="Digite o título" />
-            </div>
-
-            <div class="form-group">
-              <label for="texto">Texto:</label>
-              <textarea [(ngModel)]="postagem.texto" class="form-control" name="" id="" rows="3"></textarea>
-            </div>
-
-            <div class="d-flex justify-content-center">
-              <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
-                Cancelar
-              </button>
-              <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
-                Publicar
-              </button>
-            </div>
-          </div>
         </div>
+
+
       </div>
     </div>
+  </div>
     <!-- CARD DE TEMA -->
-    <div class="card-group-list list  mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5">
+    <div class="col-md-10 list  mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5">
 
       <div class="row d-flex justify-content-center">
         <div class="col-md-12 mb-3 br-10 d-flex justify-content-center">
-          <div class="card-group-list list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5">
+          <div class="col-md-12 list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5">
             <h1 class="text-center shadow-sm br-10 mt-3">TEMAS</h1>
-
+            
             <h5 class="fs-18 text-center shadow-sm br-10 mt-1 p-2">
               Veja aqui todos os temas cadastrados ou cadastre um novo:
             </h5>
 
             <div class="row d-flex justify-content-center shadow-sm br-10 mt-4 mb-5">
-              <div class="col-md-10 text-center">
+              <div class="col-md-6 text-center">
                 <div class="form-group mt-4">
                   <input [(ngModel)]="tema.descricao" type="text" class="form-control text-center" id="descricao"
                     placeholder="Digite a descrição do tema">
@@ -82,11 +83,11 @@
                   <button class="btn btn-success br-10" (click)="cadastrar()">Cadastrar</button>
                 </div>
               </div>
-
+            </div>
               <!-- TABELA -->
 
               <div class="row d-flex justify-content-center">
-                <div class="col mt-3 mb-5 p-10 d-flex justify-content-center">
+                <div class="col-md-6 mt-3 mb-5 p-10 d-flex justify-content-center">
 
                   <table class="table table-hover">
                     <thead class="thead-dark">

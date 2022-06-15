@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
@@ -16,7 +16,6 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
-  idPost: number
 
   listaPostagens: Postagem[]
 
@@ -31,7 +30,6 @@ export class InicioComponent implements OnInit {
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private route: ActivatedRoute,
     private authService: AuthService
 
 
@@ -42,9 +40,6 @@ export class InicioComponent implements OnInit {
       //alert('Sua seção expirou, Faça o login novamente')
       this.router.navigate(['/login'])
     }
-
-    this.idPost = this.route.snapshot.params['id']
-    this.findByIdPostagem(this.idPost)
 
     this.authService.refreshToken()
     this.getAllTemas()
@@ -58,9 +53,7 @@ export class InicioComponent implements OnInit {
   }
 
   findByIdUser() {
-    this.authService.entrar
-    this.authService.logado
-    this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
+      this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
       this.user = resp
     })
   }
@@ -68,13 +61,6 @@ export class InicioComponent implements OnInit {
   getAllTemas() {
     this.temaService.getAllTema().subscribe((resp: Tema[]) => {
       this.listaTemas = resp
-    })
-  }
-
-
-  findByIdPostagem(id: number) {
-    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
-      this.postagem = resp
     })
   }
 
@@ -97,26 +83,8 @@ export class InicioComponent implements OnInit {
       alert('Postagem realizada com sucesso')
       this.postagem = new Postagem()
       this.getAllPostagens()
-      this.getAllTemas();
     })
   }
 
-  apagar(){
-    this.postagemService.deletePostagem(this.idPost).subscribe(()=>{
-      alert('Postagem apagadas com sucesso!')
-      this.router.navigate(['/inicio'])
-    })
-  }
-
-  atualizar(){
-    this.tema.id = this.idTema
-    this.postagem.tema = this.tema
-
-    this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) =>{
-      this.postagem = resp
-      alert('Postagem atualizada com sucesso')
-      this.router.navigate(['/inicio'])
-    })
-  }
 
 }

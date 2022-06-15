@@ -86,4 +86,19 @@ export class TemaComponent implements OnInit {
       this.getAllPostagens()
     })
   }
+
+  findByIdUser() {
+    this.authService.entrar
+    this.authService.logado
+    this.authService.getByIdUser(this.idUser).subscribe((resp: User) => {
+      this.user = resp
+    })
+  }
+
+  findByIdTema() {
+    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema)=>{
+      this.tema = resp
+    })
+  }
+
 }

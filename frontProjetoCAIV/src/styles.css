@@ -20,3 +20,11 @@ a{
 .bg-pag {
     background-color: #E0C8FC !important;
 }
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    scroll-behavior: smooth;
+}
+

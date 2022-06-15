@@ -1,49 +1,8 @@
-<div class="container-fluid fundo">
+<div class="container-fluid bg-pag">
   <div class="row nvh left">
     <!-- NAVBAR LATERAL COM ICONES -->
-    <div class="col-md-1 left navh ml-2 mb-5 p-0 body-fundo br-15 mt-5 shadow">
+    <div class="col-md-1 left navh ml-2 mb-5 p-0 bg-nav br-15 mt-5 shadow">
 
-      <!-- <aside>
-        <nav class="navbar fixed-left navbar-light br-15">
-
-          <div class="navbar-nav pl-3">
-            <a class="nav-link active" routerLink="/inicio"
-              ><i
-                class="fi fi-sr-home icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Pagina inicial"
-              ></i
-            ></a>
-            <button class="nav-link active p-0 bg-transparent borda">
-              <i
-                class="fi fi-sr-user-add icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                data-toggle="modal"
-                data-target="#novaPostagem"
-                title="Nova postagem"
-              ></i>
-            </button>
-            <a class="nav-link" href=""
-              ><i
-                class="fi fi-sr-comment-user icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Minhas postagens"
-              ></i
-            ></a>
-            <a class="nav-link" href="#" routerLink=""
-              ><i
-                class="fi fi-sr-apps-sort icones pl-2"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Postagens por tema"
-              ></i
-            ></a>
-          </div>
-        </nav>
-      </aside> -->
       <div class="nav flex-column nav-pills text-white pl-3" id="v-pills-tab" role="tablist"
         aria-orientation="vertical">
         <a class="nav-link active" data-toggle="tooltip" data-placement="right" title="Pagina inicial"
@@ -105,7 +64,8 @@
         <!-- Minhas postagens -->
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
           <h1 class="text-center br-10 mt-3 text-shadow">Suas postagens</h1>
-          <div class="card br-10 mt-5 mb-5 justify-content-center" *ngFor="let item of user.postagem" style="width: 35rem">
+          <div class="card br-10 mt-5 mb-5 justify-content-center" *ngFor="let item of user.postagem"
+            style="width: 35rem">
             <div class="card-body p-1 sombrabox br-10">
               <div class="text-shadow text-center">
                 <div class="card-title bg-light sombra text-center br-10">
@@ -161,13 +121,9 @@
 
           </div>
         </div>
-
       </div>
       <!-- Postagens por tema -->
-
     </div>
-
-
   </div>
   <!-- CARD GROUP POSTAGEM -->
 
@@ -182,9 +138,20 @@
           </button>
         </div>
 
+        <div class="modal-body">
           <div class="form-group">
-            <label for="tema">Escolha um tema ou
-              <a routerLink="/tema" data-dismiss="modal" class="text-sucess"> crie o seu</a>:
+            <label for="titulo">Título:</label>
+            <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
+              placeholder="Digite o título" />
+          </div>
+
+          <div class="form-group">
+            <label for="texto">Texto:</label>
+            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tema">Escolha seu tema ou
+              <a routerLink="/tema" data-dismiss="modal"> cadastre um novo</a>:
             </label>
             <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
               <option *ngFor='let item of listaTemas' value="{{item.id}}">
@@ -193,138 +160,17 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="texto">Texto:</label>
-            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
-          </div>
-         
-
           <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
               Cancelar
             </button>
             <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
-              Postar
-
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="titulo">Título:</label>
-              <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
-                placeholder="Digite o título" />
-            </div>
-
-            <div class="form-group">
-              <label for="texto">Texto:</label>
-              <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="tema">Escolha seu tema ou
-                <a routerLink="/tema" data-dismiss="modal"> cadastre um novo</a>:
-              </label>
-              <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
-                <option *ngFor='let item of listaTemas' value="{{item.id}}">
-                  {{ item.descricao }}
-                </option>
-              </select>
-            </div>
-
-            <div class="d-flex justify-content-center">
-              <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
-                Cancelar
-              </button>
-              <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
-                Publicar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL EDIT POSTAGENS -->
-
-    <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content br-10">
-          <div class="modal-header bg-light text-shadow br-10">
-            <h5 class="modal-title text-center" id="exampleModalCenterTitle">
-              Apagar postagem
-            </h5>
-            <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="titulo">Título</label>
-              <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
-                placeholder="Seu título aqui " />
-            </div>
-            <div class="form-group">
-              <label for="texto">Texto</label>
-              <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="5"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="tema">Escolha um tema
-                <a routerLink="/tema" data-dismiss="modal">cadastre um novo</a>:
-              </label>
-              <select class="form-control" name="tema" id="tema" [(ngModel)]="idTema" (change)="findByIdTema()">
-                <option *ngFor="let item of listaTemas" value="{{ item.id }}">
-                  {{ item.descricao }}
-                </option>
-              </select>
-            </div>
-          </div>
-          <div class=" d-flex justify-content-center mb-3">
-            <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
-              Cancelar
-            </button>
-            <button type="button" class="btn btn-success br-10" (click)="atualizar()" data-dismiss="modal">
               Publicar
             </button>
           </div>
         </div>
+
+
       </div>
     </div>
-    <!-- MODAL EDIT POSTAGENS -->
-
-    <!-- MODAL DELETE POSTAGENS -->
-    <div class="modal fade" id="deletar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content br-10">
-          <div class="modal-header br-10 bg-light">
-            <h5 class="modal-title text-shadow" id="deletar">Editar postagem</h5>
-            <button type="button" class="close borda closered br-10" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="titulo">Título:</label>
-              <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
-                placeholder="Digite o título" />
-            </div>
-
-            <div class="form-group">
-              <label for="texto">Texto:</label>
-              <textarea [(ngModel)]="postagem.texto" class="form-control" name="" id="" rows="3"></textarea>
-            </div>
-
-            <div class="d-flex justify-content-center">
-              <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
-                Cancelar
-              </button>
-              <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
-                Deletar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- MODAL DELETE POSTAGENS -->
+  </div>

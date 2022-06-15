@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Postagem } from 'src/app/model/Postagem';
 import { User } from 'src/app/model/User';
 import { AuthService } from 'src/app/service/auth.service';
-import { PostagemService } from 'src/app/service/postagem.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -18,7 +16,6 @@ export class UserEditComponent implements OnInit {
 
   confirmarSenha: string
 
-  id = environment.id
   
   constructor(
     private authService: AuthService,
@@ -35,7 +32,6 @@ export class UserEditComponent implements OnInit {
     }
     this.idUser = this.route.snapshot.params['id']
     this.findByIdUser(this.idUser)
-
   }
 
   confirmaSenha(event:any){
@@ -49,13 +45,15 @@ export class UserEditComponent implements OnInit {
     } else{
       this.authService.editar(this.user).subscribe((resp:User)=>{
         this.user = resp
-
+        console.log(this.user.nome)
+        console.log(this.user.id)
+        this.router.navigate(['/login'])
         alert ('Usuario atualizado, faça login novamente!')
         environment.token = ''
         environment.nome = ''
         environment.foto = ''
         environment.id = 0
-        this.router.navigate(['/entrar'])
+        
       })
     }
 
