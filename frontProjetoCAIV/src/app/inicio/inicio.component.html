@@ -164,7 +164,7 @@
   <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered borda">
       <div class="modal-content br-10">
-        <div class="modal-header br-10 bg-light">
+        <div class="modal-header br-10 bg-pag">
           <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
           <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -179,12 +179,8 @@
           </div>
 
           <div class="form-group">
-            <label for="texto">Texto:</label>
-            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="tema">Escolha seu tema ou
-              <a routerLink="/tema" data-dismiss="modal"> cadastre um novo</a>:
+            <label for="tema">Escolha um tema ou
+              <a routerLink="/tema" data-dismiss="modal" class="text-sucess"> crie o seu</a>:
             </label>
             <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
               <option *ngFor='let item of listaTemas' value="{{item.id}}">
@@ -193,12 +189,18 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label for="texto">Texto:</label>
+            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
+          </div>
+         
+
           <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
               Cancelar
             </button>
             <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
-              Publicar
+              Postar
             </button>
           </div>
         </div>
