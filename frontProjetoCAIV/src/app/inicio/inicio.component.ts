@@ -32,7 +32,7 @@ export class InicioComponent implements OnInit {
     private postagemService: PostagemService,
     private temaService: TemaService,
     private route: ActivatedRoute,
-    private authService: AuthService,
+    private authService: AuthService
 
 
   ) { }

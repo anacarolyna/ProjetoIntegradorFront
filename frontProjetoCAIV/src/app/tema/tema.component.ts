@@ -42,6 +42,7 @@ export class TemaComponent implements OnInit {
       
     }
 
+    this.authService.refreshToken();
     this.findAllTemas()
   }
 
