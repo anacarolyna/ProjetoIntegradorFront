@@ -168,19 +168,44 @@
     </div>
 
 
+  </div>
+  <!-- CARD GROUP POSTAGEM -->
 
+  <!-- MODAL NOVA POSTAGEM-->
+  <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered borda">
+      <div class="modal-content br-10">
+        <div class="modal-header br-10 bg-pag">
+          <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
+          <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
+          <div class="form-group">
+            <label for="tema">Escolha um tema ou
+              <a routerLink="/tema" data-dismiss="modal" class="text-sucess"> crie o seu</a>:
+            </label>
+            <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
+              <option *ngFor='let item of listaTemas' value="{{item.id}}">
+                {{ item.descricao }}
+              </option>
+            </select>
+          </div>
 
-    <!-- CARD GROUP POSTAGEM -->
+          <div class="form-group">
+            <label for="texto">Texto:</label>
+            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
+          </div>
+         
 
-    <!-- MODAL NOVA POSTAGEM-->
-    <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered borda">
-        <div class="modal-content br-10">
-          <div class="modal-header br-10 bg-light">
-            <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
-            <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
+              Postar
+
             </button>
           </div>
 
