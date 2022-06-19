@@ -30,7 +30,7 @@ export class AuthService {
   }  
 
   editar(user:User): Observable<User>{
-    return this.http.post<User>('https://projetocaiv.herokuapp.com/usuario/atualizar', user, this.token)
+    return this.http.put<User>('https://projetocaiv.herokuapp.com/usuario/atualizar', user, this.token)
     // return this.http.put<User>('http://localhost:8080/usuario/atualizar', user, this.token)
   }
 
