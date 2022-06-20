@@ -23,7 +23,7 @@ export class TemaDeleteComponent implements OnInit {
   ngOnInit(): void {
     if (environment.token == '') {
       alert('Sua sessão expirou, faça login novamente')
-      this.router.navigate(['/entrar'])
+      this.router.navigate(['/inicio'])
     }
     this.idTema = this.route.snapshot.params['id']
     this.findByIdTema(this.idTema)

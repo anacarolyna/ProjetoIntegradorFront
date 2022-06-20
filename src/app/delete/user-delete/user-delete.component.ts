@@ -28,7 +28,7 @@ export class UserDeleteComponent implements OnInit {
 
     if(environment.token == ''){
       alert('Sua sessão expirou, faça login novamente')
-      this.router.navigate(['/entrar'])
+      this.router.navigate(['/inicio'])
     }
     this.idUser = this.route.snapshot.params['id']
 

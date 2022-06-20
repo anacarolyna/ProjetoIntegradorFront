@@ -28,10 +28,6 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
 
   {path: 'user-edit/:id', component: UserEditComponent},
-  {path: 'user-delete/:id', component: UserDeleteComponent},
-
-  {path: 'tema-edit/:id', component: TemaEditComponent},
-  {path: 'tema-delete/:id', component: TemaDeleteComponent},
   
   {path: 'menu-on', component: MenuOnComponent},
   {path: 'tema', component: TemaComponent},

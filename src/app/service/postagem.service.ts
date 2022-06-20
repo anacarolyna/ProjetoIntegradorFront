@@ -23,6 +23,13 @@ export class PostagemService {
   getByIdPostagem(id: number): Observable<Postagem>{
     return this.http.get<Postagem>(`https://projetocaiv.herokuapp.com/postagem/${id}`, this.token)
     //return this.http.get<Postagem>(`http://localhost:8080/postagem/${id}`, this.token)
+
+  }
+
+  getByTituloPostagem(titulo: string): Observable<Postagem[]>{
+    return this.http.get<Postagem[]>(`https://projetocaiv.herokuapp.com/postagem/titulo/${titulo}`, this.token)
+    //return this.http.get<Postagem[]>(`http://localhost:8080/postagem/titulo/${titulo}`, this.token)
+
   }
 
   postPostagem(postagem: Postagem) : Observable<Postagem>{
