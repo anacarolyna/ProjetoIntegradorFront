@@ -28,7 +28,7 @@ i{
     cursor: pointer;
 }
 
-.sair:hover {
+.sair:hover{
     color:red;
     text-shadow:10px 4px rgba(5, 3, 0, 0.068)
 }
@@ -37,4 +37,9 @@ i{
 }
 .text-shadow {
     text-shadow:4px 4px rgba(5, 3, 0, 0.068)
+}
+
+#pSair:hover{
+    color:red;
+    text-shadow:10px 4px rgba(5, 3, 0, 0.068)
 }

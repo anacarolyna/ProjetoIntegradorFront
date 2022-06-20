@@ -5,24 +5,24 @@
                 <div class="col-md-6 text-shadow shadow-sm bg-light br-15 ">
                     <h1 class="text-center mb-3 text-dark mt-2">Entrar</h1>
                     <div class="form-group  shadow-sm box-shadow">
-                        <label for="usuario">E-mail</label>
+                        <label for="usuario">E-mail:</label>
                         <input 
                         [(ngModel)]="userLogin.usuario" class="form-control" type="text" name="usuario" id="usuario"
-                            placeholder="Digite seu usuário">
+                            placeholder="Digite seu e-mail">
                     </div>
                     <div class="form-group shadow-sm box-shadow">
-                        <label for="usuario">Senha</label>
+                        <label for="usuario">Senha:</label>
                         <input [(ngModel)]="userLogin.senha" class="form-control" type="password" name="senha" id="senha"
                             placeholder="Digite sua senha">
                     </div>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center my-4">
                         <button type="submit" class=" btn btn-primary bw-2 mr-4 br-15 shadow-sm" (click)="logar()">Entrar</button>
                         <a><button type="menu" class=" btn btn-info bw-2 br-15 shadow-sm" routerLink="/cadastro">
                             Cadastre-se</button></a>
                     </div>
-                    <hr class="mt-5 mb-5">
+                    <!-- <hr class="mt-5 mb-5">
                     <p class="text-center shadow-sm ">
-                        Esqueceu a senha? <a class="text-dark" routerLink="/cadastro">Clique aqui</a></p>
+                        Esqueceu a senha? <a class="text-dark" routerLink="/cadastro">Clique aqui</a></p> -->
                 </div>
             </div>
         </div>

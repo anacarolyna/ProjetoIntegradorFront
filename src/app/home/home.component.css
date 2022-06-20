@@ -127,3 +127,11 @@ img {
     background-color: #fa707b !important;
 }
 /* Bgs do grupo */
+
+.fa-github:hover{
+    color: rgb(59, 54, 54) !important;
+}
+
+.fa-linkedin:hover{
+    color:#145889 !important;
+}
