@@ -18,6 +18,7 @@ export class InicioComponent implements OnInit {
   postagem: Postagem = new Postagem()
 
   listaPostagens: Postagem[]
+  tituloPost: string
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
@@ -25,6 +26,9 @@ export class InicioComponent implements OnInit {
 
   user: User = new User()
   idUser = environment.id
+
+  key = 'data_hora'
+  reverse = true
 
   constructor(
     private router: Router,
@@ -37,8 +41,8 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
     if(environment.token == ''){
-      //alert('Sua seção expirou, Faça o login novamente')
-      this.router.navigate(['/login'])
+      alert('Sua seção expirou, Faça o login novamente')
+      this.router.navigate(['/home'])
     }
 
     this.authService.refreshToken()
@@ -84,6 +88,17 @@ export class InicioComponent implements OnInit {
       this.postagem = new Postagem()
       this.getAllPostagens()
     })
+  }
+
+  findByTituloPostagem(){
+    if(this.tituloPost == ''){
+      this.getAllPostagens()
+    } else{
+      this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp:Postagem[]) =>{
+        this.listaPostagens = resp
+      })
+    }
+  
   }
 
 

@@ -1,59 +1,74 @@
 <div class="container-fluid bg-pag">
-  <div class="row nvh left">
+  <div class="row d-flex justify-content-center">
     <!-- NAVBAR LATERAL COM ICONES -->
-    <div class="col-md-1 left navh ml-2 mb-5 p-0 bg-nav br-15 mt-5 shadow">
+    <div class="navh left ml-2 mb-5 p-0 bg-nav br-15 mt-5 shadow">
 
-      <div class="nav flex-column nav-pills text-white pl-3" id="v-pills-tab" role="tablist"
+      <div class="nav col justify-content-center nav-pills text-white pl-3" id="v-pills-tab" role="tablist"
         aria-orientation="vertical">
+
         <a class="nav-link active" data-toggle="tooltip" data-placement="right" title="Pagina inicial"
           id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
-          aria-selected="true"><i class="fi fi-sr-home icones pl-2"></i></a>
+          aria-selected="true"><i class="fi fi-sr-home icones"></i></a>
+
         <a class="nav-link" data-toggle="tooltip" data-placement="right" title="Nova postagem" id="v-pills-profile-tab"
           data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false" data-toggle="modal"
-          data-target="#novaPostagem"><i class="fi fi-sr-user-add icones pl-2"></i></a>
+          data-target="#novaPostagem"><i class="fa fa-plus-square-o icones"></i></a>
+
         <a (click)="findByIdUser()" class="nav-link" data-toggle="tooltip" data-placement="right"
           title="Minhas postagens" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-          aria-controls="v-pills-messages" aria-selected="false"><i class="fi fi-sr-comment-user icones pl-2"></i></a>
+          aria-controls="v-pills-messages" aria-selected="false"><i class="fi fi-sr-comment-user icones"></i></a>
+
         <a class="nav-link" data-toggle="tooltip" data-placement="right" title="Postagens por tema"
           id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-          aria-controls="v-pills-settings" aria-selected="false"><i class="fi fi-sr-apps-sort icones pl-2"></i></a>
+          aria-controls="v-pills-settings" aria-selected="false"><i class="fi fi-sr-apps-sort icones"></i></a>
 
       </div>
     </div>
 
     <!-- CARD GROUP POSTAGENS -->
-    <div class="card-group-list d-flex justify-content-center list mx-auto bg-light pl-5 pr-5 br-10 mt-5 mb-5">
+    <div class="card-group-list col mx-3 justify-content-center list bg-light pl-5 pr-5 br-10 mt-5 mb-5">
 
 
       <!-- CARD 1 -->
       <div class="tab-content" id="v-pills-tabContent">
 
         <!-- HOME -->
-        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        <div class="tab-pane fade show active justify-content-center" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
           <h1 class="text-center br-10 mt-3 text-shadow">Feed inicial</h1>
 
-          <div *ngFor='let postagem of listaPostagens' class="card br-10 mt-5 mb-5 " style="width: 35rem">
-            <div class="card-body p-1 sombrabox br-10">
+          <div class="row d-flex justify-content-center my-5">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="titulo" placeholder="Pesquise uma postagem"
+                  [(ngModel)]='tituloPost' (keyup)="findByTituloPostagem()">
+              </div>
+            </div>
+          </div>
+
+          <div *ngFor='let postagem of listaPostagens | orderBy : key : reverse' class="justify-content-center br-10 mt-5 mb-5">
+            <div class="card-body m-3 sombrabox br-10 justify-content-center">
               <div class="text-shadow">
 
-                <div class="card-title bg-light sombra text-center br-10">
+                <div class="card-title bg-light sombra text-center br-10 my-2">
                   <h5> {{ postagem.titulo }} </h5>
                 </div>
 
-                <div class="card-text p-4 text-shadow text-center">
+                <div class="card-text text-center my-3">
                   <p>{{ postagem.texto }}</p>
                 </div>
 
-                <div class="br-10 col-md-12 ml-1 mb-1 card-subtitle shadow-none text-center bg-light text-muted">
+                <div class="card-subtitle text-center text-muted my-2">
                   <h6> Data: {{postagem.data_hora | date: 'dd/MM/YY'}} às {{postagem.data_hora | date: 'HH:mm'}} </h6>
                 </div>
 
                 <div class="br-10 col-md-12 ml-1 shadow-none bg-light text-center text-muted my-2">
-                  <h6 class="mb-3"> Assunto: {{ postagem.tema.descricao }} </h6>
+                  <h6 class="mb-3 text-muted"> Assunto: {{ postagem.tema.descricao }} </h6>
+
                   <div class="row d-flex justify-content-center align-items-center"> <img
-                      src="{{ postagem.usuario.foto }}" width="50" height="50" class="img-fluid rounded-circle mr-3" />
-                    <h6> Por: {{ postagem.usuario.nome }} </h6>
-                  </div>
+                    src="{{ postagem.usuario.foto }}" width="50" height="50" class="img-fluid rounded-circle" />
+                  <h6 class="ml-2"> Por: {{ postagem.usuario.nome }} </h6>
+                </div>
+
                 </div>
               </div>
             </div>
@@ -64,21 +79,21 @@
         <!-- Minhas postagens -->
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
           <h1 class="text-center br-10 mt-3 text-shadow">Suas postagens</h1>
-          <div class="card br-10 mt-5 mb-5 justify-content-center" *ngFor="let item of user.postagem"
-            style="width: 35rem">
+          <div class="card br-10 mt-5 mb-5 justify-content-center"
+            *ngFor='let item of user.postagem | orderBy : key : reverse'>
             <div class="card-body p-1 sombrabox br-10">
               <div class="text-shadow text-center">
-                <div class="card-title bg-light sombra text-center br-10">
+                <div class="card-title sombra text-center br-10">
                   <h5> {{ item.titulo }} </h5>
                 </div>
                 <div class="card-text p-4 text-shadow">
                   <p>{{ item.texto }}</p>
                 </div>
 
-                <div class="br-10 col-md-12 ml-1 mb-1 card-subtitle shadow-none text-center bg-light text-muted">
+                <div class="br-10 col-md-12 ml-1 mb-1 card-subtitle shadow-none text-center text-muted">
                   <h6> Data: {{item.data_hora | date: 'dd/MM/YY'}} às {{item.data_hora | date: 'HH:mm'}} </h6>
                 </div>
-                <div class="br-10 col-md-12 ml-1 shadow-none bg-light text-center text-muted my-2">
+                <div class="br-10 col-md-12 ml-1 shadow-none text-center text-muted my-2">
                   <h6 class="mb-3"> Assunto: {{ item.tema.descricao }} </h6>
                 </div>
                 <a [routerLink]="['/postagem-edit', item.id]" class="text-info mr-3">Editar</a>
@@ -92,9 +107,16 @@
 
         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
           <h1 class="text-center br-10 mt-3 text-shadow">Postagens por tema</h1>
-          <div style="width: 35rem" *ngFor="let tema of listaTemas">
-            <h3>{{tema.descricao}}</h3>
-            <div class="card-body p-1 sombrabox br-10 my-5" *ngFor="let item of tema.postagem">
+          <div class="form-group">
+            <h3 for="tema" class="text-center my-5">Escolha o tema</h3>
+            <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
+              <option *ngFor='let item of listaTemas' value="{{item.id}}">
+                {{ item.descricao }}
+              </option>
+            </select>
+
+            <div class="card-body p-1 sombrabox br-10 my-5"
+              *ngFor='let item of tema.postagem | orderBy : key : reverse'>
 
               <div class="text-shadow">
 
@@ -122,55 +144,52 @@
           </div>
         </div>
       </div>
-      <!-- Postagens por tema -->
     </div>
+    <!-- Postagens por tema -->
   </div>
-  <!-- CARD GROUP POSTAGEM -->
+</div>
+<!-- CARD GROUP POSTAGEM -->
 
-  <!-- MODAL NOVA POSTAGEM-->
-  <div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered borda">
-      <div class="modal-content br-10">
-        <div class="modal-header br-10 bg-pag">
-          <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
-          <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+<!-- MODAL NOVA POSTAGEM-->
+<div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered borda">
+    <div class="modal-content br-10">
+      <div class="modal-header br-10 bg-pag">
+        <h5 class="modal-title text-shadow" id="novaPostagem">Nova Postagem</h5>
+        <button type="button" class="close closered borda br-10" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="titulo">Título:</label>
+          <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
+            placeholder="Digite o título" />
+        </div>
+
+        <div class="form-group">
+          <label for="texto">Texto:</label>
+          <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="tema">Escolha o tema da publicação</label>
+          <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
+            <option *ngFor='let item of listaTemas' value="{{item.id}}">
+              {{ item.descricao }}
+            </option>
+          </select>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
+            Publicar
           </button>
         </div>
-
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="titulo">Título:</label>
-            <input [(ngModel)]="postagem.titulo" type="text" class="form-control" id="titulo"
-              placeholder="Digite o título" />
-          </div>
-
-          <div class="form-group">
-            <label for="texto">Texto:</label>
-            <textarea [(ngModel)]="postagem.texto" class="form-control" name="texto" id="texto" rows="3"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="tema">Escolha seu tema ou
-              <a routerLink="/tema" data-dismiss="modal"> cadastre um novo</a>:
-            </label>
-            <select class="form-control" [(ngModel)]="idTema" (change)="findByIdTema()" name="tema" id="tema">
-              <option *ngFor='let item of listaTemas' value="{{item.id}}">
-                {{ item.descricao }}
-              </option>
-            </select>
-          </div>
-
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-danger br-10 mr-3" data-dismiss="modal">
-              Cancelar
-            </button>
-            <button type="button" class="btn btn-primary br-10" (click)="publicar()" data-dismiss="modal">
-              Publicar
-            </button>
-          </div>
-        </div>
-
-
       </div>
     </div>
   </div>
+</div>

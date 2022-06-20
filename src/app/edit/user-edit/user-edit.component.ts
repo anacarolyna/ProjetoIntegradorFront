@@ -28,7 +28,7 @@ export class UserEditComponent implements OnInit {
 
     if(environment.token == ''){
       alert('Sua sessão expirou, faça login novamente')
-      this.router.navigate(['/entrar'])
+      this.router.navigate(['/home'])
     }
     this.idUser = this.route.snapshot.params['id']
     this.findByIdUser(this.idUser)

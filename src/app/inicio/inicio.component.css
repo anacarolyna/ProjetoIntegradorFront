@@ -33,7 +33,6 @@
 .left {
     display:flex;
     align-items: center;
-
 }
 .list {
     display: flex;
@@ -41,7 +40,7 @@
 }
 .navh {
     height: 450px;
-    width: 50px;
+    width: 80px;
 }
 .fundo {
     background-color: #a828e4;  
@@ -62,4 +61,11 @@ h1 {
 }
 .br-l {
     border-right: 10px;
+}
+.nav-link.active{
+background-color: #331B45 !important;
+}
+
+.icones:hover{
+color: #E0C8FC !important;
 }
