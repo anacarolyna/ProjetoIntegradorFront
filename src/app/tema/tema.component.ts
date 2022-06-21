@@ -8,6 +8,7 @@ import { PostagemService } from '../service/postagem.service';
 import { Tema } from '../model/Tema';
 import { AuthService } from '../service/auth.service';
 import { TemaService } from '../service/tema.service';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-tema',
@@ -31,7 +32,8 @@ export class TemaComponent implements OnInit {
     private postagemService: PostagemService,
     private temaService: TemaService,
     private authService: AuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private alertas: AlertasService
 
   ) {}
 
@@ -58,7 +60,7 @@ export class TemaComponent implements OnInit {
       this.temaService.postTema(this.tema).subscribe({
       next: (resp: Tema) =>{
       this.tema = resp
-      alert('Tema cadastrado com sucesso!') // Mensagem pro usuário
+      this.alertas.showAlertSuccess('Tema cadastrado com sucesso!') // Mensagem pro usuário
       this.findAllTemas()
       this.tema = new Tema // Zera o campo após cadastrar um tema
       },
