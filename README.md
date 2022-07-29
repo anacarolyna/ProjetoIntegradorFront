@@ -1,5 +1,5 @@
 # ProjetoIntegradorFront
-Onde o código da parte de Front-end do nosso Projeto Integrador CAIV será armazenado.
+Onde o código da parte de Front-end do nosso Projeto Integrador CAIV está armazenado.
 
 <hr>
 
